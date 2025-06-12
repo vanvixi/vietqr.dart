@@ -1,0 +1,15 @@
+name: vietqr
+publish_to: none
+
+environment:
+  sdk: '>=3.7.2 <4.0.0'
+
+workspace:
+  - packages/vietqr_core
+  - packages/vietqr_image
+  - packages/vietqr_widget
+
+dev_dependencies:
+  melos: ^6.3.2
+
+
