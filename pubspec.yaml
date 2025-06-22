@@ -11,5 +11,6 @@ workspace:
 
 dev_dependencies:
   melos: ^6.3.2
+  frontend_server_client: ^4.0.0
 
 
