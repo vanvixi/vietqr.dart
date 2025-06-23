@@ -5,7 +5,6 @@ version: 0.1.0
 homepage: https://github.com/vanvixi/vietqr.dart/tree/main/packages/vietqr_core
 repository: https://github.com/vanvixi/vietqr.dart
 issue_tracker: https://github.com/vanvixi/vietqr.dart/issues
-publish_to: "https://pub.dev"
 
 environment:
   sdk: '>=3.7.2 <4.0.0'
