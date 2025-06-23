@@ -7,7 +7,10 @@ void main() {
     group('QR Generation Tests', () {
       test('should generate valid QR string for minimal data', () {
         // Arrange
-        final data = VietQrData(bankBinCode: SupportedBank.vietcombank, bankAccount: '1234567890');
+        final data = VietQrData(
+          bankBinCode: SupportedBank.vietcombank,
+          bankAccount: '1234567890',
+        );
 
         // Act
         final qrString = VietQrEncoder.encodePaymentQr(data);
@@ -25,7 +28,11 @@ void main() {
 
       test('should generate QR string with amount for static QR', () {
         // Arrange
-        final data = VietQrData(bankBinCode: SupportedBank.bidv, bankAccount: '9876543210', amount: '50000');
+        final data = VietQrData(
+          bankBinCode: SupportedBank.bidv,
+          bankAccount: '9876543210',
+          amount: '50000',
+        );
 
         // Act
         final qrString = VietQrEncoder.encodePaymentQr(data);
@@ -60,7 +67,11 @@ void main() {
         final data = VietQrData(
           bankBinCode: SupportedBank.vietcombank,
           bankAccount: '1234567890',
-          additional: const AdditionalData(purpose: 'Payment', mobileNumber: '0123456789', billNumber: 'INV001'),
+          additional: const AdditionalData(
+            purpose: 'Payment',
+            mobileNumber: '0123456789',
+            billNumber: 'INV001',
+          ),
         );
 
         // Act
@@ -115,7 +126,10 @@ void main() {
     group('CRC Checksum Tests', () {
       test('should generate valid CRC checksum', () {
         // Arrange
-        final data = VietQrData(bankBinCode: SupportedBank.vietcombank, bankAccount: '1234567890');
+        final data = VietQrData(
+          bankBinCode: SupportedBank.vietcombank,
+          bankAccount: '1234567890',
+        );
 
         // Act
         final qrString = VietQrEncoder.encodePaymentQr(data);
@@ -128,8 +142,14 @@ void main() {
 
       test('should generate different checksums for different data', () {
         // Arrange
-        final data1 = VietQrData(bankBinCode: SupportedBank.vietcombank, bankAccount: '1234567890');
-        final data2 = VietQrData(bankBinCode: SupportedBank.bidv, bankAccount: '9876543210');
+        final data1 = VietQrData(
+          bankBinCode: SupportedBank.vietcombank,
+          bankAccount: '1234567890',
+        );
+        final data2 = VietQrData(
+          bankBinCode: SupportedBank.bidv,
+          bankAccount: '9876543210',
+        );
 
         // Act
         final qrString1 = VietQrEncoder.encodePaymentQr(data1);
@@ -170,7 +190,10 @@ void main() {
         final qrString = VietQrEncoder.encodePaymentQr(data);
 
         // Assert
-        expect(qrString, contains('QRIBFTTA')); // Service code should be present
+        expect(
+          qrString,
+          contains('QRIBFTTA'),
+        ); // Service code should be present
       });
 
       test('should encode merchant category when provided', () {
@@ -202,7 +225,10 @@ void main() {
         );
 
         // Act & Assert
-        expect(() => VietQrEncoder.encodePaymentQr(invalidData), throwsA(isA<InvalidLengthException>()));
+        expect(
+          () => VietQrEncoder.encodePaymentQr(invalidData),
+          throwsA(isA<InvalidLengthException>()),
+        );
       });
     });
   });
@@ -216,7 +242,10 @@ void main() {
         amount: '250000',
         merchantName: 'Coffee Shop ABC',
         merchantCity: 'Ha Noi',
-        additional: const AdditionalData(purpose: 'Coffee order #123', mobileNumber: '0987654321'),
+        additional: const AdditionalData(
+          purpose: 'Coffee order #123',
+          mobileNumber: '0987654321',
+        ),
       );
 
       // Act
@@ -237,7 +266,11 @@ void main() {
     test('should work with all supported banks', () {
       // Arrange & Act & Assert
       for (final bank in SupportedBank.values) {
-        final data = VietQrData(bankBinCode: bank, bankAccount: '1234567890', amount: '10000');
+        final data = VietQrData(
+          bankBinCode: bank,
+          bankAccount: '1234567890',
+          amount: '10000',
+        );
 
         expect(() => data.validate(), returnsNormally);
         final qrString = VietQrEncoder.encodePaymentQr(data);

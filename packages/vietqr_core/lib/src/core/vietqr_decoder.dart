@@ -17,7 +17,10 @@ class VietQrDecoder {
   /// Decode VietQR-compliant payment string to VietQrData
   static VietQrData decodePaymentQr(String qrString) {
     if (qrString.isEmpty) {
-      throw InvalidDataException(fieldName: 'qrString', message: 'cannot be empty');
+      throw InvalidDataException(
+        fieldName: 'qrString',
+        message: 'cannot be empty',
+      );
     }
 
     // Validate checksum first
@@ -25,7 +28,10 @@ class VietQrDecoder {
 
     // Remove CRC field (6304) and checksum from payload for parsing
     // CRC field is always at the end: "6304" + 4-character checksum
-    final payloadWithoutCrc = qrString.substring(0, qrString.length - 8); // Remove "6304XXXX"
+    final payloadWithoutCrc = qrString.substring(
+      0,
+      qrString.length - 8,
+    ); // Remove "6304XXXX"
 
     // Parse TLV fields
     final fields = _parseTLVFields(payloadWithoutCrc);
@@ -41,22 +47,33 @@ class VietQrDecoder {
   static void _validateChecksum(String qrString) {
     if (qrString.length < 8) {
       // Need at least "6304XXXX"
-      throw InvalidDataException(fieldName: 'qrString', message: 'too short to contain valid checksum');
+      throw InvalidDataException(
+        fieldName: 'qrString',
+        message: 'too short to contain valid checksum',
+      );
     }
 
     // Check if it ends with CRC field identifier "6304"
-    if (!qrString.substring(qrString.length - 8, qrString.length - 4).startsWith('6304')) {
-      throw InvalidDataException(fieldName: 'qrString', message: 'missing CRC field identifier');
+    if (!qrString
+        .substring(qrString.length - 8, qrString.length - 4)
+        .startsWith('6304')) {
+      throw InvalidDataException(
+        fieldName: 'qrString',
+        message: 'missing CRC field identifier',
+      );
     }
 
     final payload = qrString.substring(0, qrString.length - kCRCChecksumLength);
-    final providedChecksum = qrString.substring(qrString.length - kCRCChecksumLength);
+    final providedChecksum = qrString.substring(
+      qrString.length - kCRCChecksumLength,
+    );
     final calculatedChecksum = CRC16Util.calculateChecksum(payload);
 
     if (providedChecksum.toUpperCase() != calculatedChecksum.toUpperCase()) {
       throw InvalidDataException(
         fieldName: 'checksum',
-        message: 'invalid checksum. Expected: $calculatedChecksum, got: $providedChecksum',
+        message:
+            'invalid checksum. Expected: $calculatedChecksum, got: $providedChecksum',
       );
     }
   }
@@ -71,7 +88,10 @@ class VietQrDecoder {
 
     while (index < payload.length) {
       if (index + 4 > payload.length) {
-        throw InvalidDataException(fieldName: 'payload', message: 'incomplete TLV field at position $index');
+        throw InvalidDataException(
+          fieldName: 'payload',
+          message: 'incomplete TLV field at position $index',
+        );
       }
 
       final tag = payload.substring(index, index + 2);
@@ -79,7 +99,10 @@ class VietQrDecoder {
 
       final length = int.tryParse(lengthStr);
       if (length == null || length < 0) {
-        throw InvalidDataException(fieldName: 'length', message: 'invalid length value: $lengthStr');
+        throw InvalidDataException(
+          fieldName: 'length',
+          message: 'invalid length value: $lengthStr',
+        );
       }
 
       if (index + 4 + length > payload.length) {
@@ -109,7 +132,9 @@ class VietQrDecoder {
   static VietQrData _buildVietQrData(Map<String, String> fields) {
     // Extract required fields
     final version = fields[RootField.version.id] ?? '';
-    final merchantAccountInfo = _parseMerchantAccountInfo(fields[RootField.merchantAccount.id] ?? '');
+    final merchantAccountInfo = _parseMerchantAccountInfo(
+      fields[RootField.merchantAccount.id] ?? '',
+    );
 
     // Extract optional fields
     final merchantCategory = fields[RootField.category.id] ?? '';
@@ -122,7 +147,9 @@ class VietQrDecoder {
     final merchantName = fields[RootField.merchantName.id] ?? '';
     final merchantCity = fields[RootField.merchantCity.id] ?? '';
     final postalCode = fields[RootField.postal.id] ?? '';
-    final additional = _parseAdditionalData(fields[RootField.additionalData.id] ?? '');
+    final additional = _parseAdditionalData(
+      fields[RootField.additionalData.id] ?? '',
+    );
 
     return VietQrData.custom(
       version: version,
@@ -143,12 +170,16 @@ class VietQrDecoder {
 
   static MerchantAccountInfoData _parseMerchantAccountInfo(String value) {
     if (value.isEmpty) {
-      throw InvalidDataException(fieldName: 'merchantAccount', message: 'cannot be empty');
+      throw InvalidDataException(
+        fieldName: 'merchantAccount',
+        message: 'cannot be empty',
+      );
     }
 
     final fields = _parseNestedTLVFields(value);
     final globalUid = fields[MerchantSubField.gUID.id] ?? '';
-    final beneficiaryOrgValue = fields[MerchantSubField.beneficiaryOrg.id] ?? '';
+    final beneficiaryOrgValue =
+        fields[MerchantSubField.beneficiaryOrg.id] ?? '';
     final serviceCode = fields[MerchantSubField.service.id] ?? '';
 
     // Parse beneficiary organization data
@@ -156,7 +187,10 @@ class VietQrDecoder {
     final binCode = beneficiaryFields[MerchantSubField.binCode.id] ?? '';
     final accountNum = beneficiaryFields[MerchantSubField.accountNum.id] ?? '';
 
-    final beneficiaryOrgData = BeneficiaryOrgData.custom(bankBinCode: binCode, bankAccount: accountNum);
+    final beneficiaryOrgData = BeneficiaryOrgData.custom(
+      bankBinCode: binCode,
+      bankAccount: accountNum,
+    );
 
     return MerchantAccountInfoData.custom(
       globalUid: globalUid,

@@ -56,8 +56,11 @@ class VietQrEncoder {
         buffer.write(feeFixedField);
       }
 
-      if (data.tipOrConvenience == TipOrConvenienceIndicator.percentageFee.value) {
-        final feePercentageField = RootField.feePercentage.toTLV(data.feePercentage);
+      if (data.tipOrConvenience ==
+          TipOrConvenienceIndicator.percentageFee.value) {
+        final feePercentageField = RootField.feePercentage.toTLV(
+          data.feePercentage,
+        );
         buffer.write(feePercentageField);
       }
     }
@@ -85,12 +88,23 @@ class VietQrEncoder {
     buffer.write(kCRC);
   }
 
-  static void _buildMerchantAccInfoField(StringBuffer buffer, MerchantAccountInfoData merchantAccInfo) {
+  static void _buildMerchantAccInfoField(
+    StringBuffer buffer,
+    MerchantAccountInfoData merchantAccInfo,
+  ) {
     final gUIDField = MerchantSubField.gUID.toTLV(merchantAccInfo.globalUid);
-    final binField = MerchantSubField.binCode.toTLV(merchantAccInfo.beneficiaryOrgData.bankBinCode);
-    final accountField = MerchantSubField.accountNum.toTLV(merchantAccInfo.beneficiaryOrgData.bankAccount);
-    final beneficiaryOrgField = MerchantSubField.beneficiaryOrg.toTLV(binField + accountField);
-    final serviceField = MerchantSubField.service.toTLV(merchantAccInfo.serviceCode);
+    final binField = MerchantSubField.binCode.toTLV(
+      merchantAccInfo.beneficiaryOrgData.bankBinCode,
+    );
+    final accountField = MerchantSubField.accountNum.toTLV(
+      merchantAccInfo.beneficiaryOrgData.bankAccount,
+    );
+    final beneficiaryOrgField = MerchantSubField.beneficiaryOrg.toTLV(
+      binField + accountField,
+    );
+    final serviceField = MerchantSubField.service.toTLV(
+      merchantAccInfo.serviceCode,
+    );
 
     final merchantBuffer =
         StringBuffer()
@@ -98,11 +112,17 @@ class VietQrEncoder {
           ..write(beneficiaryOrgField)
           ..write(serviceField);
 
-    final merchantAccInfoField = RootField.merchantAccount.toTLV(merchantBuffer.toString());
+    final merchantAccInfoField = RootField.merchantAccount.toTLV(
+      merchantBuffer.toString(),
+    );
     buffer.write(merchantAccInfoField);
   }
 
-  static void _buildTransactionInfoFields(StringBuffer buffer, String currency, String amount) {
+  static void _buildTransactionInfoFields(
+    StringBuffer buffer,
+    String currency,
+    String amount,
+  ) {
     final currencyField = RootField.currency.toTLV(currency);
     buffer.write(currencyField);
 
@@ -112,57 +132,80 @@ class VietQrEncoder {
     buffer.write(amountField);
   }
 
-  static void _buildAdditionalDataField(StringBuffer buffer, AdditionalData additional) {
+  static void _buildAdditionalDataField(
+    StringBuffer buffer,
+    AdditionalData additional,
+  ) {
     if (additional.isEmpty) return;
 
     final additionalBuffer = StringBuffer();
 
     if (additional.billNumber.isNotEmpty) {
-      final mobileField = AdditionalDataSubField.billNumber.toTLV(additional.billNumber);
+      final mobileField = AdditionalDataSubField.billNumber.toTLV(
+        additional.billNumber,
+      );
       additionalBuffer.write(mobileField);
     }
 
     if (additional.mobileNumber.isNotEmpty) {
-      final mobileField = AdditionalDataSubField.mobileNumber.toTLV(additional.mobileNumber);
+      final mobileField = AdditionalDataSubField.mobileNumber.toTLV(
+        additional.mobileNumber,
+      );
       additionalBuffer.write(mobileField);
     }
 
     if (additional.storeLabel.isNotEmpty) {
-      final storeField = AdditionalDataSubField.storeLabel.toTLV(additional.storeLabel);
+      final storeField = AdditionalDataSubField.storeLabel.toTLV(
+        additional.storeLabel,
+      );
       additionalBuffer.write(storeField);
     }
 
     if (additional.loyaltyNumber.isNotEmpty) {
-      final loyaltyField = AdditionalDataSubField.loyaltyNumber.toTLV(additional.loyaltyNumber);
+      final loyaltyField = AdditionalDataSubField.loyaltyNumber.toTLV(
+        additional.loyaltyNumber,
+      );
       additionalBuffer.write(loyaltyField);
     }
 
     if (additional.referenceLabel.isNotEmpty) {
-      final referenceField = AdditionalDataSubField.referenceLabel.toTLV(additional.referenceLabel);
+      final referenceField = AdditionalDataSubField.referenceLabel.toTLV(
+        additional.referenceLabel,
+      );
       additionalBuffer.write(referenceField);
     }
 
     if (additional.customerLabel.isNotEmpty) {
-      final customerField = AdditionalDataSubField.customerLabel.toTLV(additional.customerLabel);
+      final customerField = AdditionalDataSubField.customerLabel.toTLV(
+        additional.customerLabel,
+      );
       additionalBuffer.write(customerField);
     }
 
     if (additional.terminalLabel.isNotEmpty) {
-      final terminalField = AdditionalDataSubField.terminalLabel.toTLV(additional.terminalLabel);
+      final terminalField = AdditionalDataSubField.terminalLabel.toTLV(
+        additional.terminalLabel,
+      );
       additionalBuffer.write(terminalField);
     }
 
     if (additional.purpose.isNotEmpty) {
-      final purposeField = AdditionalDataSubField.purpose.toTLV(additional.purpose);
+      final purposeField = AdditionalDataSubField.purpose.toTLV(
+        additional.purpose,
+      );
       additionalBuffer.write(purposeField);
     }
 
     if (additional.customerLabel.isNotEmpty) {
-      final customerField = AdditionalDataSubField.customerLabel.toTLV(additional.customerLabel);
+      final customerField = AdditionalDataSubField.customerLabel.toTLV(
+        additional.customerLabel,
+      );
       additionalBuffer.write(customerField);
     }
 
-    final additionalField = RootField.additionalData.toTLV(additionalBuffer.toString());
+    final additionalField = RootField.additionalData.toTLV(
+      additionalBuffer.toString(),
+    );
     buffer.write(additionalField);
   }
 }

@@ -67,7 +67,9 @@ class VietQrData extends Data with VietQrDataMappable {
     return VietQrData._(
       version: version?.value ?? VietQrVersion.v_01.value,
       initiationMethod:
-          amount.isEmpty ? PointOfInitiationMethod.dynamicQr.value : PointOfInitiationMethod.staticQr.value,
+          amount.isEmpty
+              ? PointOfInitiationMethod.dynamicQr.value
+              : PointOfInitiationMethod.staticQr.value,
       merchantAccInfo: MerchantAccountInfoData(
         bankBinCode: bankBinCode,
         bankAccount: bankAccount,
@@ -108,7 +110,9 @@ class VietQrData extends Data with VietQrDataMappable {
     return VietQrData._(
       version: version ?? VietQrVersion.v_01.value,
       initiationMethod:
-          amount.isEmpty ? PointOfInitiationMethod.dynamicQr.value : PointOfInitiationMethod.staticQr.value,
+          amount.isEmpty
+              ? PointOfInitiationMethod.dynamicQr.value
+              : PointOfInitiationMethod.staticQr.value,
       merchantAccInfo: merchantAccInfo,
       merchantCategory: merchantCategory ?? '',
       currency: currency ?? VietQrCurrency.vnd.value,
@@ -168,21 +172,34 @@ class VietQrData extends Data with VietQrDataMappable {
   @override
   void validate() {
     if (version.length != kVersionLength) {
-      throw InvalidLengthException(fieldName: 'version', length: kVersionLength);
+      throw InvalidLengthException(
+        fieldName: 'version',
+        length: kVersionLength,
+      );
     }
 
     if (initiationMethod.length != kMethodLength) {
-      throw InvalidLengthException(fieldName: 'initiationMethod', length: kMethodLength);
+      throw InvalidLengthException(
+        fieldName: 'initiationMethod',
+        length: kMethodLength,
+      );
     }
 
     merchantAccInfo.validate();
 
-    if (merchantCategory.isNotEmpty && merchantCategory.length != kMerchantCategoryLength) {
-      throw InvalidLengthException(fieldName: 'category', length: kMerchantCategoryLength);
+    if (merchantCategory.isNotEmpty &&
+        merchantCategory.length != kMerchantCategoryLength) {
+      throw InvalidLengthException(
+        fieldName: 'category',
+        length: kMerchantCategoryLength,
+      );
     }
 
     if (currency.length != kCurrencyLength) {
-      throw InvalidLengthException(fieldName: 'currency', length: kCurrencyLength);
+      throw InvalidLengthException(
+        fieldName: 'currency',
+        length: kCurrencyLength,
+      );
     }
 
     _validateAmount();
@@ -190,19 +207,33 @@ class VietQrData extends Data with VietQrDataMappable {
     _validateConvenienceFee();
 
     if (countryCode.length != kCountryCodeLength) {
-      throw InvalidLengthException(fieldName: 'countryCode', length: kCountryCodeLength);
+      throw InvalidLengthException(
+        fieldName: 'countryCode',
+        length: kCountryCodeLength,
+      );
     }
 
-    if (merchantName.isNotEmpty && merchantName.length > kMerchantNameMaxLength) {
-      throw MaxLengthExceededCharException(fieldName: 'merchantName', maxLength: kMerchantNameMaxLength);
+    if (merchantName.isNotEmpty &&
+        merchantName.length > kMerchantNameMaxLength) {
+      throw MaxLengthExceededCharException(
+        fieldName: 'merchantName',
+        maxLength: kMerchantNameMaxLength,
+      );
     }
 
-    if (merchantCity.isNotEmpty && merchantCity.length > kMerchantCityMaxLength) {
-      throw MaxLengthExceededCharException(fieldName: 'merchantCity', maxLength: kMerchantCityMaxLength);
+    if (merchantCity.isNotEmpty &&
+        merchantCity.length > kMerchantCityMaxLength) {
+      throw MaxLengthExceededCharException(
+        fieldName: 'merchantCity',
+        maxLength: kMerchantCityMaxLength,
+      );
     }
 
     if (postalCode.isNotEmpty && postalCode.length > kPostalCodeMaxLength) {
-      throw MaxLengthExceededCharException(fieldName: 'postalCode', maxLength: kAmountMaxLength);
+      throw MaxLengthExceededCharException(
+        fieldName: 'postalCode',
+        maxLength: kAmountMaxLength,
+      );
     }
 
     additional.validate();
@@ -212,14 +243,23 @@ class VietQrData extends Data with VietQrDataMappable {
     if (amount.isEmpty) return;
 
     if (amount.length > kAmountMaxLength) {
-      throw MaxLengthExceededCharException(fieldName: 'amount', maxLength: kAmountMaxLength);
+      throw MaxLengthExceededCharException(
+        fieldName: 'amount',
+        maxLength: kAmountMaxLength,
+      );
     }
 
     final numAmount = num.tryParse(amount);
     if (numAmount == null) {
-      throw InvalidDataException(fieldName: 'amount', message: 'must be a valid number');
+      throw InvalidDataException(
+        fieldName: 'amount',
+        message: 'must be a valid number',
+      );
     } else if (numAmount <= 0) {
-      throw InvalidDataException(fieldName: 'amount', message: 'must be greater than 0');
+      throw InvalidDataException(
+        fieldName: 'amount',
+        message: 'must be greater than 0',
+      );
     }
   }
 
@@ -227,14 +267,18 @@ class VietQrData extends Data with VietQrDataMappable {
     if (tipOrConvenience.isEmpty) return;
 
     if (tipOrConvenience.length != kTipOrConvenienceLength) {
-      throw InvalidLengthException(fieldName: tipOrConvenience, length: kTipOrConvenienceLength);
+      throw InvalidLengthException(
+        fieldName: tipOrConvenience,
+        length: kTipOrConvenienceLength,
+      );
     }
 
     final indicator = TipOrConvenienceIndicator.fromValue(tipOrConvenience);
     if (indicator == null) {
       throw InvalidDataException(
         fieldName: tipOrConvenience,
-        message: "must be one of: ${TipOrConvenienceIndicator.values.map((e) => e.value).join(', ')}",
+        message:
+            "must be one of: ${TipOrConvenienceIndicator.values.map((e) => e.value).join(', ')}",
       );
     }
 
@@ -243,12 +287,19 @@ class VietQrData extends Data with VietQrDataMappable {
         break;
       case TipOrConvenienceIndicator.fixedFee:
         if (feeFixed.isEmpty || feeFixed.length > kFeeFixedMaxLength) {
-          throw MaxLengthExceededCharException(fieldName: feeFixed, maxLength: kFeeFixedMaxLength);
+          throw MaxLengthExceededCharException(
+            fieldName: feeFixed,
+            maxLength: kFeeFixedMaxLength,
+          );
         }
         break;
       case TipOrConvenienceIndicator.percentageFee:
-        if (feePercentage.isEmpty || feePercentage.length > kFeePercentageMaxLength) {
-          throw MaxLengthExceededCharException(fieldName: feePercentage, maxLength: kFeePercentageMaxLength);
+        if (feePercentage.isEmpty ||
+            feePercentage.length > kFeePercentageMaxLength) {
+          throw MaxLengthExceededCharException(
+            fieldName: feePercentage,
+            maxLength: kFeePercentageMaxLength,
+          );
         }
         break;
     }

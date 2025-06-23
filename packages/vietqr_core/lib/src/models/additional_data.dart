@@ -53,39 +53,71 @@ class AdditionalData extends Data with AdditionalDataMappable {
     // which is valid - the entire additional data section will be omitted
 
     if (billNumber.isNotEmpty && billNumber.length > kAdditionalMaxLength) {
-      throw MaxLengthExceededCharException(fieldName: 'billNumber', maxLength: kAdditionalMaxLength);
+      throw MaxLengthExceededCharException(
+        fieldName: 'billNumber',
+        maxLength: kAdditionalMaxLength,
+      );
     }
 
     if (mobileNumber.isNotEmpty && mobileNumber.length > kAdditionalMaxLength) {
-      throw MaxLengthExceededCharException(fieldName: 'mobileNumber', maxLength: kAdditionalMaxLength);
+      throw MaxLengthExceededCharException(
+        fieldName: 'mobileNumber',
+        maxLength: kAdditionalMaxLength,
+      );
     }
 
     if (storeLabel.isNotEmpty && storeLabel.length > kAdditionalMaxLength) {
-      throw MaxLengthExceededCharException(fieldName: 'storeLabel', maxLength: kAdditionalMaxLength);
+      throw MaxLengthExceededCharException(
+        fieldName: 'storeLabel',
+        maxLength: kAdditionalMaxLength,
+      );
     }
 
-    if (loyaltyNumber.isNotEmpty && loyaltyNumber.length > kAdditionalMaxLength) {
-      throw MaxLengthExceededCharException(fieldName: 'loyaltyNumber', maxLength: kAdditionalMaxLength);
+    if (loyaltyNumber.isNotEmpty &&
+        loyaltyNumber.length > kAdditionalMaxLength) {
+      throw MaxLengthExceededCharException(
+        fieldName: 'loyaltyNumber',
+        maxLength: kAdditionalMaxLength,
+      );
     }
 
-    if (referenceLabel.isNotEmpty && referenceLabel.length > kAdditionalMaxLength) {
-      throw MaxLengthExceededCharException(fieldName: 'referenceLabel', maxLength: kAdditionalMaxLength);
+    if (referenceLabel.isNotEmpty &&
+        referenceLabel.length > kAdditionalMaxLength) {
+      throw MaxLengthExceededCharException(
+        fieldName: 'referenceLabel',
+        maxLength: kAdditionalMaxLength,
+      );
     }
 
-    if (customerLabel.isNotEmpty && customerLabel.length > kAdditionalMaxLength) {
-      throw MaxLengthExceededCharException(fieldName: 'customerLabel', maxLength: kAdditionalMaxLength);
+    if (customerLabel.isNotEmpty &&
+        customerLabel.length > kAdditionalMaxLength) {
+      throw MaxLengthExceededCharException(
+        fieldName: 'customerLabel',
+        maxLength: kAdditionalMaxLength,
+      );
     }
 
-    if (terminalLabel.isNotEmpty && terminalLabel.length > kAdditionalMaxLength) {
-      throw MaxLengthExceededCharException(fieldName: 'terminalLabel', maxLength: kAdditionalMaxLength);
+    if (terminalLabel.isNotEmpty &&
+        terminalLabel.length > kAdditionalMaxLength) {
+      throw MaxLengthExceededCharException(
+        fieldName: 'terminalLabel',
+        maxLength: kAdditionalMaxLength,
+      );
     }
 
     if (purpose.isNotEmpty && purpose.length > kAdditionalMaxLength) {
-      throw MaxLengthExceededCharException(fieldName: 'purpose', maxLength: kAdditionalMaxLength);
+      throw MaxLengthExceededCharException(
+        fieldName: 'purpose',
+        maxLength: kAdditionalMaxLength,
+      );
     }
 
-    if (consumerRequest.isNotEmpty && consumerRequest.length > kAdditionalMaxLength) {
-      throw MaxLengthExceededCharException(fieldName: 'consumerRequest', maxLength: kAdditionalMaxLength);
+    if (consumerRequest.isNotEmpty &&
+        consumerRequest.length > kAdditionalMaxLength) {
+      throw MaxLengthExceededCharException(
+        fieldName: 'consumerRequest',
+        maxLength: kAdditionalMaxLength,
+      );
     }
   }
 }

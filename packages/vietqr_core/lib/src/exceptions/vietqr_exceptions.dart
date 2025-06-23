@@ -18,8 +18,11 @@ abstract class VietQrException implements Exception {
 
 /// Exception thrown for invalid input data
 class InvalidDataException extends VietQrException {
-  const InvalidDataException({required String message, this.fieldName = '', Object? innerException})
-    : super(message, innerException: innerException);
+  const InvalidDataException({
+    required String message,
+    this.fieldName = '',
+    Object? innerException,
+  }) : super(message, innerException: innerException);
 
   /// Field name that contains invalid data
   final String fieldName;

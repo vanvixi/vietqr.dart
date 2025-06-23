@@ -11,7 +11,8 @@ part 'merchant_account_info_data.mapper.dart';
 
 /// Represents Merchant Account Information  (Field id: 38)
 @MappableClass()
-class MerchantAccountInfoData extends Data with MerchantAccountInfoDataMappable {
+class MerchantAccountInfoData extends Data
+    with MerchantAccountInfoDataMappable {
   const MerchantAccountInfoData._({
     required this.globalUid,
     required this.beneficiaryOrgData,
@@ -27,7 +28,10 @@ class MerchantAccountInfoData extends Data with MerchantAccountInfoDataMappable 
   }) {
     return MerchantAccountInfoData._(
       globalUid: globalUid,
-      beneficiaryOrgData: BeneficiaryOrgData(bankBinCode: bankBinCode, bankAccount: bankAccount),
+      beneficiaryOrgData: BeneficiaryOrgData(
+        bankBinCode: bankBinCode,
+        bankAccount: bankAccount,
+      ),
       serviceCode: serviceCode?.value ?? VietQrService.accountNumber.value,
     );
   }
@@ -57,13 +61,19 @@ class MerchantAccountInfoData extends Data with MerchantAccountInfoDataMappable 
   @override
   void validate() {
     if (globalUid.isEmpty || globalUid.length > kMerchantGUidLength) {
-      throw MaxLengthExceededCharException(fieldName: 'globalUid', maxLength: kMerchantGUidLength);
+      throw MaxLengthExceededCharException(
+        fieldName: 'globalUid',
+        maxLength: kMerchantGUidLength,
+      );
     }
 
     beneficiaryOrgData.validate();
 
     if (serviceCode.isEmpty || serviceCode.length > kServiceCodeMaxLength) {
-      throw MaxLengthExceededCharException(fieldName: 'service', maxLength: kServiceCodeMaxLength);
+      throw MaxLengthExceededCharException(
+        fieldName: 'service',
+        maxLength: kServiceCodeMaxLength,
+      );
     }
   }
 }

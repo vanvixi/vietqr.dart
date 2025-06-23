@@ -21,11 +21,15 @@ class BeneficiaryOrgDataMapper extends ClassMapperBase<BeneficiaryOrgData> {
   final String id = 'BeneficiaryOrgData';
 
   static String _$bankBinCode(BeneficiaryOrgData v) => v.bankBinCode;
-  static const Field<BeneficiaryOrgData, String> _f$bankBinCode =
-      Field('bankBinCode', _$bankBinCode);
+  static const Field<BeneficiaryOrgData, String> _f$bankBinCode = Field(
+    'bankBinCode',
+    _$bankBinCode,
+  );
   static String _$bankAccount(BeneficiaryOrgData v) => v.bankAccount;
-  static const Field<BeneficiaryOrgData, String> _f$bankAccount =
-      Field('bankAccount', _$bankAccount);
+  static const Field<BeneficiaryOrgData, String> _f$bankAccount = Field(
+    'bankAccount',
+    _$bankAccount,
+  );
 
   @override
   final MappableFields<BeneficiaryOrgData> fields = const {
@@ -35,8 +39,9 @@ class BeneficiaryOrgDataMapper extends ClassMapperBase<BeneficiaryOrgData> {
 
   static BeneficiaryOrgData _instantiate(DecodingData data) {
     return BeneficiaryOrgData.custom(
-        bankBinCode: data.dec(_f$bankBinCode),
-        bankAccount: data.dec(_f$bankAccount));
+      bankBinCode: data.dec(_f$bankBinCode),
+      bankAccount: data.dec(_f$bankAccount),
+    );
   }
 
   @override
@@ -62,41 +67,58 @@ mixin BeneficiaryOrgDataMappable {
         .encodeMap<BeneficiaryOrgData>(this as BeneficiaryOrgData);
   }
 
-  BeneficiaryOrgDataCopyWith<BeneficiaryOrgData, BeneficiaryOrgData,
-          BeneficiaryOrgData>
-      get copyWith => _BeneficiaryOrgDataCopyWithImpl<BeneficiaryOrgData,
-          BeneficiaryOrgData>(this as BeneficiaryOrgData, $identity, $identity);
+  BeneficiaryOrgDataCopyWith<
+    BeneficiaryOrgData,
+    BeneficiaryOrgData,
+    BeneficiaryOrgData
+  >
+  get copyWith =>
+      _BeneficiaryOrgDataCopyWithImpl<BeneficiaryOrgData, BeneficiaryOrgData>(
+        this as BeneficiaryOrgData,
+        $identity,
+        $identity,
+      );
   @override
   String toString() {
-    return BeneficiaryOrgDataMapper.ensureInitialized()
-        .stringifyValue(this as BeneficiaryOrgData);
+    return BeneficiaryOrgDataMapper.ensureInitialized().stringifyValue(
+      this as BeneficiaryOrgData,
+    );
   }
 
   @override
   bool operator ==(Object other) {
-    return BeneficiaryOrgDataMapper.ensureInitialized()
-        .equalsValue(this as BeneficiaryOrgData, other);
+    return BeneficiaryOrgDataMapper.ensureInitialized().equalsValue(
+      this as BeneficiaryOrgData,
+      other,
+    );
   }
 
   @override
   int get hashCode {
-    return BeneficiaryOrgDataMapper.ensureInitialized()
-        .hashValue(this as BeneficiaryOrgData);
+    return BeneficiaryOrgDataMapper.ensureInitialized().hashValue(
+      this as BeneficiaryOrgData,
+    );
   }
 }
 
 extension BeneficiaryOrgDataValueCopy<$R, $Out>
     on ObjectCopyWith<$R, BeneficiaryOrgData, $Out> {
   BeneficiaryOrgDataCopyWith<$R, BeneficiaryOrgData, $Out>
-      get $asBeneficiaryOrgData => $base.as(
-          (v, t, t2) => _BeneficiaryOrgDataCopyWithImpl<$R, $Out>(v, t, t2));
+  get $asBeneficiaryOrgData => $base.as(
+    (v, t, t2) => _BeneficiaryOrgDataCopyWithImpl<$R, $Out>(v, t, t2),
+  );
 }
 
-abstract class BeneficiaryOrgDataCopyWith<$R, $In extends BeneficiaryOrgData,
-    $Out> implements ClassCopyWith<$R, $In, $Out> {
+abstract class BeneficiaryOrgDataCopyWith<
+  $R,
+  $In extends BeneficiaryOrgData,
+  $Out
+>
+    implements ClassCopyWith<$R, $In, $Out> {
   $R call({String? bankBinCode, String? bankAccount});
   BeneficiaryOrgDataCopyWith<$R2, $In, $Out2> $chain<$R2, $Out2>(
-      Then<$Out2, $R2> t);
+    Then<$Out2, $R2> t,
+  );
 }
 
 class _BeneficiaryOrgDataCopyWithImpl<$R, $Out>
@@ -108,18 +130,20 @@ class _BeneficiaryOrgDataCopyWithImpl<$R, $Out>
   late final ClassMapperBase<BeneficiaryOrgData> $mapper =
       BeneficiaryOrgDataMapper.ensureInitialized();
   @override
-  $R call({String? bankBinCode, String? bankAccount}) =>
-      $apply(FieldCopyWithData({
-        if (bankBinCode != null) #bankBinCode: bankBinCode,
-        if (bankAccount != null) #bankAccount: bankAccount
-      }));
+  $R call({String? bankBinCode, String? bankAccount}) => $apply(
+    FieldCopyWithData({
+      if (bankBinCode != null) #bankBinCode: bankBinCode,
+      if (bankAccount != null) #bankAccount: bankAccount,
+    }),
+  );
   @override
   BeneficiaryOrgData $make(CopyWithData data) => BeneficiaryOrgData.custom(
-      bankBinCode: data.get(#bankBinCode, or: $value.bankBinCode),
-      bankAccount: data.get(#bankAccount, or: $value.bankAccount));
+    bankBinCode: data.get(#bankBinCode, or: $value.bankBinCode),
+    bankAccount: data.get(#bankAccount, or: $value.bankAccount),
+  );
 
   @override
   BeneficiaryOrgDataCopyWith<$R2, BeneficiaryOrgData, $Out2> $chain<$R2, $Out2>(
-          Then<$Out2, $R2> t) =>
-      _BeneficiaryOrgDataCopyWithImpl<$R2, $Out2>($value, $cast, t);
+    Then<$Out2, $R2> t,
+  ) => _BeneficiaryOrgDataCopyWithImpl<$R2, $Out2>($value, $cast, t);
 }
