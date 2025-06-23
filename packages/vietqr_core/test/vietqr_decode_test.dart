@@ -149,7 +149,7 @@ void main() {
           amount: '50000',
         );
         final validQr = VietQrEncoder.encodePaymentQr(originalData);
-        final corruptedQr = validQr.substring(0, validQr.length - 4) + 'XXXX';
+        final corruptedQr = '${validQr.substring(0, validQr.length - 4)}XXXX';
 
         // Act & Assert
         expect(

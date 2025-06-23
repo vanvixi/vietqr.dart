@@ -5,7 +5,7 @@ import '../models/additional_data.dart';
 import '../models/beneficiary_org_data.dart';
 import '../models/merchant_account_info_data.dart';
 import '../models/vietqr_data.dart';
-import '../utils/CRC16Util.dart';
+import '../utils/crc16_util.dart';
 
 /// Core VietQR decoder implementing the VietQR specification
 ///
