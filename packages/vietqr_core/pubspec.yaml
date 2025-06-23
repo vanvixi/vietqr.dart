@@ -18,3 +18,12 @@ dev_dependencies:
   test: ^1.24.0
   build_runner: ^2.5.2
   dart_mappable_builder: ^4.5.0
+
+
+topics:
+  - qr
+  - vietqr
+  - viet_qr
+  - banking
+  - vietnam
+  - payment
