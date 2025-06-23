@@ -47,12 +47,12 @@ class VietQrData extends Data with VietQrDataMappable {
   /// );
   /// ```
   factory VietQrData({
-    VietQRVersion? version,
+    VietQrVersion? version,
     required SupportedBank bankBinCode,
     required String bankAccount,
-    VietQRService? serviceCode,
+    VietQrService? serviceCode,
     String? merchantCategory,
-    VietQRCurrency? currency,
+    VietQrCurrency? currency,
     String? amount,
     String? tipOrConvenience,
     String? feeFixed,
@@ -65,7 +65,7 @@ class VietQrData extends Data with VietQrDataMappable {
   }) {
     amount ??= '';
     return VietQrData._(
-      version: version?.value ?? VietQRVersion.v_01.value,
+      version: version?.value ?? VietQrVersion.v_01.value,
       initiationMethod:
           amount.isEmpty ? PointOfInitiationMethod.dynamicQr.value : PointOfInitiationMethod.staticQr.value,
       merchantAccInfo: MerchantAccountInfoData(
@@ -74,7 +74,7 @@ class VietQrData extends Data with VietQrDataMappable {
         serviceCode: serviceCode,
       ),
       merchantCategory: merchantCategory ?? '',
-      currency: currency?.value ?? VietQRCurrency.vnd.value,
+      currency: currency?.value ?? VietQrCurrency.vnd.value,
       amount: amount,
       tipOrConvenience: tipOrConvenience ?? '',
       feeFixed: feeFixed ?? '',
@@ -106,12 +106,12 @@ class VietQrData extends Data with VietQrDataMappable {
   }) {
     amount ??= '';
     return VietQrData._(
-      version: version ?? VietQRVersion.v_01.value,
+      version: version ?? VietQrVersion.v_01.value,
       initiationMethod:
           amount.isEmpty ? PointOfInitiationMethod.dynamicQr.value : PointOfInitiationMethod.staticQr.value,
       merchantAccInfo: merchantAccInfo,
       merchantCategory: merchantCategory ?? '',
-      currency: currency ?? VietQRCurrency.vnd.value,
+      currency: currency ?? VietQrCurrency.vnd.value,
       amount: amount,
       tipOrConvenience: tipOrConvenience ?? '',
       feeFixed: feeFixed ?? '',

@@ -1,7 +1,7 @@
-enum VietQRVersion {
+enum VietQrVersion {
   v_01('01');
 
-  const VietQRVersion(this.value);
+  const VietQrVersion(this.value);
 
   final String value;
 }
@@ -15,22 +15,22 @@ enum PointOfInitiationMethod {
   final String value;
 }
 
-enum VietQRService {
+enum VietQrService {
   /// NAPAS 24/7 Fast Transfer to Account
   accountNumber('QRIBFTTA'),
 
   /// NAPAS 24/7 Fast Transfer to Card
   cardNumber('QRIBFTTC');
 
-  const VietQRService(this.value);
+  const VietQrService(this.value);
 
   final String value;
 }
 
-enum VietQRCurrency {
+enum VietQrCurrency {
   vnd('704');
 
-  const VietQRCurrency(this.value);
+  const VietQrCurrency(this.value);
 
   final String value;
 }

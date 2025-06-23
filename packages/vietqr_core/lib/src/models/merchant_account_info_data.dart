@@ -23,12 +23,12 @@ class MerchantAccountInfoData extends Data with MerchantAccountInfoDataMappable 
     String globalUid = kNapasAID,
     required SupportedBank bankBinCode,
     required String bankAccount,
-    required VietQRService? serviceCode,
+    required VietQrService? serviceCode,
   }) {
     return MerchantAccountInfoData._(
       globalUid: globalUid,
       beneficiaryOrgData: BeneficiaryOrgData(bankBinCode: bankBinCode, bankAccount: bankAccount),
-      serviceCode: serviceCode?.value ?? VietQRService.accountNumber.value,
+      serviceCode: serviceCode?.value ?? VietQrService.accountNumber.value,
     );
   }
 

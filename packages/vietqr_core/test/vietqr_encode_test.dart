@@ -163,7 +163,7 @@ void main() {
         final data = VietQrData(
           bankBinCode: SupportedBank.techcombank,
           bankAccount: '1111222233334444',
-          serviceCode: VietQRService.accountNumber,
+          serviceCode: VietQrService.accountNumber,
         );
 
         // Act
@@ -197,7 +197,7 @@ void main() {
           merchantAccInfo: MerchantAccountInfoData(
             bankBinCode: SupportedBank.vietcombank,
             bankAccount: '1234567890',
-            serviceCode: VietQRService.accountNumber,
+            serviceCode: VietQrService.accountNumber,
           ),
         );
 

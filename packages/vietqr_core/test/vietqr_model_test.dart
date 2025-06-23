@@ -29,12 +29,12 @@ void main() {
     test('should create VietQrData with all optional fields', () {
       // Arrange & Act
       final data = VietQrData(
-        version: VietQRVersion.v_01,
+        version: VietQrVersion.v_01,
         bankBinCode: SupportedBank.techcombank,
         bankAccount: '1111222233334444',
-        serviceCode: VietQRService.accountNumber,
+        serviceCode: VietQrService.accountNumber,
         merchantCategory: '5812',
-        currency: VietQRCurrency.vnd,
+        currency: VietQrCurrency.vnd,
         amount: '100000',
         tipOrConvenience: '01',
         countryCode: 'VN',
@@ -62,7 +62,7 @@ void main() {
       final merchantAccInfo = MerchantAccountInfoData(
         bankBinCode: SupportedBank.mbbank,
         bankAccount: '5555666677778888',
-        serviceCode: VietQRService.accountNumber,
+        serviceCode: VietQrService.accountNumber,
       );
 
       // Act
@@ -88,7 +88,7 @@ void main() {
         merchantAccInfo: MerchantAccountInfoData(
           bankBinCode: SupportedBank.vietcombank,
           bankAccount: '1234567890',
-          serviceCode: VietQRService.accountNumber,
+          serviceCode: VietQrService.accountNumber,
         ),
       );
 
@@ -102,7 +102,7 @@ void main() {
         merchantAccInfo: MerchantAccountInfoData(
           bankBinCode: SupportedBank.vietcombank,
           bankAccount: '1234567890',
-          serviceCode: VietQRService.accountNumber,
+          serviceCode: VietQrService.accountNumber,
         ),
       );
 
@@ -131,7 +131,7 @@ void main() {
         merchantAccInfo: MerchantAccountInfoData(
           bankBinCode: SupportedBank.vietcombank,
           bankAccount: '1234567890',
-          serviceCode: VietQRService.accountNumber,
+          serviceCode: VietQrService.accountNumber,
         ),
       );
 
@@ -270,7 +270,7 @@ void main() {
         merchantAccInfo: MerchantAccountInfoData(
           bankBinCode: SupportedBank.vietcombank,
           bankAccount: '1234567890',
-          serviceCode: VietQRService.accountNumber,
+          serviceCode: VietQrService.accountNumber,
         ),
       );
 
@@ -285,7 +285,7 @@ void main() {
         merchantAccInfo: MerchantAccountInfoData(
           bankBinCode: SupportedBank.vietcombank,
           bankAccount: '1234567890',
-          serviceCode: VietQRService.accountNumber,
+          serviceCode: VietQrService.accountNumber,
         ),
       );
 
