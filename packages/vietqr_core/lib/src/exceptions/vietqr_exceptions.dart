@@ -55,4 +55,15 @@ class InvalidLengthException extends InvalidDataException {
 /// Exception thrown when checksum validation fails
 class ChecksumException extends VietQrException {
   const ChecksumException(super.message, {super.innerException});
+
+  @override
+  String toString() => 'ChecksumException: $message';
+}
+
+/// Exception thrown for format-related issues
+class FormatException extends VietQrException {
+  const FormatException(super.message, {super.innerException});
+
+  @override
+  String toString() => 'FormatException: $message';
 }

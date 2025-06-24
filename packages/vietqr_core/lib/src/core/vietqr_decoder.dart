@@ -56,7 +56,7 @@ class VietQrDecoder {
     // Check if it ends with CRC field identifier "6304"
     if (!qrString
         .substring(qrString.length - 8, qrString.length - 4)
-        .startsWith('6304')) {
+        .startsWith(kCRC)) {
       throw InvalidDataException(
         fieldName: 'qrString',
         message: 'missing CRC field identifier',
@@ -67,13 +67,11 @@ class VietQrDecoder {
     final providedChecksum = qrString.substring(
       qrString.length - kCRCChecksumLength,
     );
-    final calculatedChecksum = CRC16Util.calculateChecksum(payload);
+    final checksum = CRC16Util.calculateChecksum(payload);
 
-    if (providedChecksum.toUpperCase() != calculatedChecksum.toUpperCase()) {
-      throw InvalidDataException(
-        fieldName: 'checksum',
-        message:
-            'invalid checksum. Expected: $calculatedChecksum, got: $providedChecksum',
+    if (providedChecksum.toUpperCase() != checksum.toUpperCase()) {
+      throw ChecksumException(
+        'Invalid checksum. Expected: $checksum, got: $providedChecksum',
       );
     }
   }
@@ -88,10 +86,7 @@ class VietQrDecoder {
 
     while (index < payload.length) {
       if (index + 4 > payload.length) {
-        throw InvalidDataException(
-          fieldName: 'payload',
-          message: 'incomplete TLV field at position $index',
-        );
+        throw FormatException('Incomplete TLV field at position $index');
       }
 
       final tag = payload.substring(index, index + 2);
@@ -99,16 +94,12 @@ class VietQrDecoder {
 
       final length = int.tryParse(lengthStr);
       if (length == null || length < 0) {
-        throw InvalidDataException(
-          fieldName: 'length',
-          message: 'invalid length value: $lengthStr',
-        );
+        throw FormatException('Invalid length value: $lengthStr');
       }
 
       if (index + 4 + length > payload.length) {
-        throw InvalidDataException(
-          fieldName: 'payload',
-          message: 'field $tag length $length exceeds remaining payload',
+        throw FormatException(
+          'Field $tag length $length exceeds remaining payload',
         );
       }
 
@@ -171,8 +162,7 @@ class VietQrDecoder {
   static MerchantAccountInfoData _parseMerchantAccountInfo(String value) {
     if (value.isEmpty) {
       throw InvalidDataException(
-        fieldName: 'merchantAccount',
-        message: 'cannot be empty',
+        message: 'Merchant Account Info cannot be empty',
       );
     }
 
@@ -185,7 +175,8 @@ class VietQrDecoder {
     // Parse beneficiary organization data
     final beneficiaryFields = _parseNestedTLVFields(beneficiaryOrgValue);
     final binCode = beneficiaryFields[MerchantAccSubField.binCode.id] ?? '';
-    final accountNum = beneficiaryFields[MerchantAccSubField.accountNum.id] ?? '';
+    final accountNum =
+        beneficiaryFields[MerchantAccSubField.accountNum.id] ?? '';
 
     final beneficiaryOrgData = BeneficiaryOrgData.custom(
       bankBinCode: binCode,
