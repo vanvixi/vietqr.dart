@@ -177,15 +177,15 @@ class VietQrDecoder {
     }
 
     final fields = _parseNestedTLVFields(value);
-    final globalUid = fields[MerchantSubField.gUID.id] ?? '';
+    final globalUid = fields[MerchantAccSubField.gUID.id] ?? '';
     final beneficiaryOrgValue =
-        fields[MerchantSubField.beneficiaryOrg.id] ?? '';
-    final serviceCode = fields[MerchantSubField.service.id] ?? '';
+        fields[MerchantAccSubField.beneficiaryOrg.id] ?? '';
+    final serviceCode = fields[MerchantAccSubField.service.id] ?? '';
 
     // Parse beneficiary organization data
     final beneficiaryFields = _parseNestedTLVFields(beneficiaryOrgValue);
-    final binCode = beneficiaryFields[MerchantSubField.binCode.id] ?? '';
-    final accountNum = beneficiaryFields[MerchantSubField.accountNum.id] ?? '';
+    final binCode = beneficiaryFields[MerchantAccSubField.binCode.id] ?? '';
+    final accountNum = beneficiaryFields[MerchantAccSubField.accountNum.id] ?? '';
 
     final beneficiaryOrgData = BeneficiaryOrgData.custom(
       bankBinCode: binCode,

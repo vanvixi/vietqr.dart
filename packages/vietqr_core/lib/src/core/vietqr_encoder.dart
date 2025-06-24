@@ -80,17 +80,17 @@ class VietQrEncoder {
     StringBuffer buffer,
     MerchantAccountInfoData merchantAccInfo,
   ) {
-    final gUIDField = MerchantSubField.gUID.toTLV(merchantAccInfo.globalUid);
-    final binField = MerchantSubField.binCode.toTLV(
+    final gUIDField = MerchantAccSubField.gUID.toTLV(merchantAccInfo.globalUid);
+    final binField = MerchantAccSubField.binCode.toTLV(
       merchantAccInfo.beneficiaryOrgData.bankBinCode,
     );
-    final accountField = MerchantSubField.accountNum.toTLV(
+    final accountField = MerchantAccSubField.accountNum.toTLV(
       merchantAccInfo.beneficiaryOrgData.bankAccount,
     );
-    final beneficiaryOrgField = MerchantSubField.beneficiaryOrg.toTLV(
+    final beneficiaryOrgField = MerchantAccSubField.beneficiaryOrg.toTLV(
       binField + accountField,
     );
-    final serviceField = MerchantSubField.service.toTLV(
+    final serviceField = MerchantAccSubField.service.toTLV(
       merchantAccInfo.serviceCode,
     );
 

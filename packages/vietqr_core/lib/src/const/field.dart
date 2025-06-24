@@ -35,7 +35,7 @@ enum RootField implements Field {
 }
 
 // Merchant-related fields
-enum MerchantSubField implements Field {
+enum MerchantAccSubField implements Field {
   gUID('00', 'Globally Unique Identifier'),
   beneficiaryOrg('01', 'Beneficiary Organization'),
   service('02', 'Service Code'),
@@ -44,7 +44,7 @@ enum MerchantSubField implements Field {
   binCode('00', 'Acquirer ID/BNB ID'),
   accountNum('01', 'Merchant ID/Consumer ID');
 
-  const MerchantSubField(this.id, this.description);
+  const MerchantAccSubField(this.id, this.description);
 
   @override
   final String id;
