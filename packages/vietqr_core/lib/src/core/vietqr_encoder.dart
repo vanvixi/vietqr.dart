@@ -46,24 +46,12 @@ class VietQrEncoder {
 
     _buildTransactionInfoFields(buffer, data.currency, data.amount);
 
-    // Build convenience fee fields if applicable
-    if (data.tipOrConvenience.isNotEmpty) {
-      final tipField = RootField.tipOrConvenience.toTLV(data.tipOrConvenience);
-      buffer.write(tipField);
-
-      if (data.tipOrConvenience == TipOrConvenienceIndicator.fixedFee.value) {
-        final feeFixedField = RootField.feeFixed.toTLV(data.feeFixed);
-        buffer.write(feeFixedField);
-      }
-
-      if (data.tipOrConvenience ==
-          TipOrConvenienceIndicator.percentageFee.value) {
-        final feePercentageField = RootField.feePercentage.toTLV(
-          data.feePercentage,
-        );
-        buffer.write(feePercentageField);
-      }
-    }
+    _buildConvenienceFeeFields(
+      buffer,
+      data.tipOrConvenience,
+      data.feeFixed,
+      data.feePercentage,
+    );
 
     final countryField = RootField.country.toTLV(data.countryCode);
     buffer.write(countryField);
@@ -130,6 +118,28 @@ class VietQrEncoder {
 
     final amountField = RootField.amount.toTLV(amount);
     buffer.write(amountField);
+  }
+
+  static void _buildConvenienceFeeFields(
+    StringBuffer buffer,
+    String tipOrConvenience,
+    String feeFixed,
+    String feePercentage,
+  ) {
+    if (tipOrConvenience.isEmpty) return;
+
+    final tipField = RootField.tipOrConvenience.toTLV(tipOrConvenience);
+    buffer.write(tipField);
+
+    if (tipOrConvenience == TipOrConvenienceIndicator.fixedFee.value) {
+      final feeFixedField = RootField.feeFixed.toTLV(feeFixed);
+      buffer.write(feeFixedField);
+    }
+
+    if (tipOrConvenience == TipOrConvenienceIndicator.percentageFee.value) {
+      final feePercentageField = RootField.feePercentage.toTLV(feePercentage);
+      buffer.write(feePercentageField);
+    }
   }
 
   static void _buildAdditionalDataField(

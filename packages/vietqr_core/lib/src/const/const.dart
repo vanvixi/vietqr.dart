@@ -1,10 +1,7 @@
 const String kNapasAID = 'A000000727';
 const String kDefaultCountryCode = 'VN';
 
-// Placeholder for CRC checksum in the QR code string
-const String kCRC = '6304';
-
-// Validation constants
+// Validation length constants
 const int kVersionLength = 2;
 const int kMethodLength = 2;
 const int kCurrencyLength = 3;
@@ -26,6 +23,7 @@ const int kAdditionalRequestMaxLength = 3;
 const int kQrStringMinLength = 50;
 
 // CRC constants
+const String kCRC = '6304'; //Placeholder for CRC checksum in the QR code string
 const int kCRCPolynomial = 0x1021;
 const int kCRCInitialValue = 0xFFFF;
 const int kCRCChecksumLength = 4;
