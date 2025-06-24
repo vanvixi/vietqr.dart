@@ -1,17 +1,19 @@
 # VietQR Core
 
+Language: English | [Tiếng Việt](README.vi.md)
+
 A pure Dart library for encoding and decoding VietQR data according to the EMVCo standard. This package provides low-level APIs for generating VietQR-compliant payment QR codes suitable for both client and server environments.
 
 ## Features
 
-- ✅ **Pure Dart implementation** - Works on all platforms (mobile, web, desktop, server)
-- ✅ **VietQR compliant** - Follows Vietnamese QR payment standards
-- ✅ **EMVCo compliant** - Adheres to EMVCo QR Code Specification
-- ✅ **Encode & Decode** - Full support for encoding and decoding VietQR data
-- ✅ **Type-safe** - Strong typing with comprehensive validation
-- ✅ **18+ Vietnamese banks** - Built-in support for major Vietnamese banks
-- ✅ **Extensible** - Easy to add custom bank configurations
-- ✅ **Well-documented** - Comprehensive documentation and examples
+- ✅ **Pure Dart implementation** – Works on all platforms (mobile, web, desktop, server)
+- ✅ **VietQR compliant** – Follows Vietnamese QR payment standards
+- ✅ **EMVCo compliant** – Adheres to EMVCo QR Code Specification
+- ✅ **Encode & Decode** – Full support for encoding and decoding VietQR data
+- ✅ **Type-safe** – Strong typing with comprehensive validation
+- ✅ **18+ Vietnamese banks** – Built-in support for major Vietnamese banks
+- ✅ **Extensible** – Easy to add custom bank configurations
+- ✅ **Well-documented** – Comprehensive documentation and examples
 
 ## Supported Banks
 
@@ -36,21 +38,6 @@ The package includes built-in support for major Vietnamese banks:
 - **VietA Bank** (970427)
 - **BaoViet Bank** (970438)
 - **ABBank** (970425)
-
-## Installation
-
-Add this to your package's `pubspec.yaml` file:
-
-```yaml
-dependencies:
-  vietqr_core: ^0.1.0
-```
-
-Then run:
-
-```bash
-dart pub get
-```
 
 ## Usage
 
@@ -129,10 +116,14 @@ final qrString = VietQr.encode(detailedPayment);
 
 ```dart
 // Using custom merchant account info
-final customMerchantInfo = MerchantAccountInfoData(
-  bankBinCode: SupportedBank.mbbank,
+final beneficiaryOrg = BeneficiaryOrgData.custom(
+  bankBinCode: "970418",
   bankAccount: '5566778899',
-  serviceCode: VietQRService.transfer, // Optional
+);
+
+final customMerchantInfo = MerchantAccountInfoData.custom(
+  beneficiaryOrgData: beneficiaryOrg,
+  serviceCode: VietQrService.accountNumber, // Optional
 );
 
 final payment = VietQrData.custom(
@@ -145,6 +136,9 @@ final payment = VietQrData.custom(
   ),
 );
 ```
+## Documentation reference
+- [Field Definitions](vietqr_field_definitions_en.md)
+- [Format Technical Specification](https://vietqr.net/portal-service/download/documents/QR_Format_T&C_v1.5.2_EN_102022.pdf)
 
 ## API Reference
 
@@ -215,9 +209,11 @@ The library includes comprehensive validation:
 - **Business rule validation**
 
 Invalid data will throw specific exceptions:
+- `InvalidDataException`
 - `InvalidLengthException`
 - `MaxLengthExceededCharException`
-- `InvalidDataException`
+- `ChecksumException`
+- `FormatException`
 
 ## Error Handling
 
@@ -235,14 +231,6 @@ try {
 } catch (e) {
   print('General Error: $e');
 }
-```
-
-## Testing
-
-Run the test suite:
-
-```bash
-dart test
 ```
 
 ## Contributing
