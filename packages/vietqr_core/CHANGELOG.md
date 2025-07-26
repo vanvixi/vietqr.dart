@@ -1,3 +1,7 @@
+## 0.2.3
+
+- Downgrade Dart SDK to version 3.5.0 to extend support.
+
 ## 0.2.2
 
 - Refactor class name and exception name.
