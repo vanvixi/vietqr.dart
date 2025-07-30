@@ -1,8 +1,10 @@
-/// Support for doing something awesome.
+/// A Flutter UI widget to display VietQR codes.
 ///
-/// More dartdocs go here.
+/// This library provides widgets to easily display VietQR payment codes
+/// using the vietqr_core package and pretty_qr_code for rendering.
 library;
 
-export 'src/vietqr_widget_base.dart';
+export 'package:vietqr_core/vietqr_core.dart';
 
-// TODO: Export any libraries intended for clients of this package.
+export 'src/types/embedded_image.dart';
+export 'src/vietqr_widget.dart';
