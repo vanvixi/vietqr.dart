@@ -14,7 +14,6 @@ class VietQrExampleApp extends StatelessWidget {
       title: 'VietQR Widget Example',
       debugShowCheckedModeBanner: false,
       theme: ThemeData(
-        useMaterial3: true,
         colorScheme: ColorScheme.fromSeed(seedColor: Colors.blue),
       ),
       home: const VietQrExampleScreen(),
@@ -31,14 +30,11 @@ class VietQrExampleScreen extends StatefulWidget {
 
 class _VietQrExampleScreenState extends State<VietQrExampleScreen> {
   VietQrData _currentQrData = VietQrData(
-    bankBinCode: SupportedBank.techcombank,
-    bankAccount: '9876543210',
-    merchantName: 'Coffee Shop ABC',
+    bankBinCode: SupportedBank.vietcombank,
+    bankAccount: 'v9x',
+    merchantName: 'VietQR Widget',
     merchantCity: 'Hanoi',
-    additional: const AdditionalData(
-      purpose: 'Coffee payment',
-      storeLabel: 'Store #001',
-    ),
+    additional: const AdditionalData(purpose: 'Coffee payment'),
   );
 
   void _onQrGenerated(VietQrData qrData) {
@@ -49,81 +45,83 @@ class _VietQrExampleScreenState extends State<VietQrExampleScreen> {
 
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      appBar: AppBar(
-        centerTitle: true,
-        title: const Text('VietQR Widget Example'),
-      ),
-      body: Align(
-        alignment: Alignment.topCenter,
-        child: ConstrainedBox(
-          constraints: const BoxConstraints(maxWidth: 1024),
-          child: LayoutBuilder(
-            builder: (context, constraints) {
-              final safePadding = MediaQuery.of(context).padding;
-              return Row(
-                mainAxisAlignment: MainAxisAlignment.center,
-                crossAxisAlignment: CrossAxisAlignment.start,
-                children: [
-                  if (constraints.maxWidth >= 720)
-                    Flexible(
-                      flex: 3,
-                      child: Padding(
-                        padding: EdgeInsets.only(
-                          left: safePadding.left + 24,
-                          right: safePadding.right + 24,
-                          bottom: 24,
-                        ),
-                        child: _VietQrAnimatedView(qrData: _currentQrData),
-                      ),
+    return ConstrainedBox(
+      constraints: const BoxConstraints(maxWidth: 1024),
+      child: LayoutBuilder(
+        builder: (context, constraints) {
+          final isMobile = constraints.maxWidth < 640;
+          final safePadding = MediaQuery.of(context).padding;
+
+          return Scaffold(
+            resizeToAvoidBottomInset: true,
+            appBar: AppBar(
+              centerTitle: true,
+              title: const Text('VietQR Widget Example'),
+            ),
+            floatingActionButton: isMobile
+                ? FloatingActionButton(
+                    onPressed: () => showSettingsBottomSheet(
+                      context,
+                      initialData: _currentQrData,
+                      onQrGenerated: _onQrGenerated,
                     ),
-
-                  Flexible(
-                    flex: 2,
-                    child: Column(
+                    child: const Icon(Icons.qr_code),
+                  )
+                : null,
+            body: Align(
+              alignment: Alignment.topCenter,
+              child: isMobile
+                  ? Padding(
+                      padding: safePadding.copyWith(top: 0, bottom: 0),
+                      child: _AnimatedVietQrWidget(qrData: _currentQrData),
+                    )
+                  : Row(
+                      mainAxisAlignment: MainAxisAlignment.center,
+                      crossAxisAlignment: CrossAxisAlignment.start,
                       children: [
-                        if (constraints.maxWidth < 720)
-                          Padding(
-                            padding: safePadding.copyWith(
-                              top: 0,
-                              bottom: 0,
+                        Flexible(
+                          flex: 3,
+                          child: Padding(
+                            padding: EdgeInsets.only(
+                              left: safePadding.left + 24,
+                              right: safePadding.right + 24,
+                              bottom: 24,
                             ),
-                            child: _VietQrAnimatedView(qrData: _currentQrData),
+                            child: _AnimatedVietQrWidget(
+                              qrData: _currentQrData,
+                            ),
                           ),
-
-                        Expanded(
+                        ),
+                        Flexible(
+                          flex: 2,
                           child: SingleChildScrollView(
                             padding: safePadding.copyWith(top: 0),
                             child: _VietQrSettings(
+                              initialData: _currentQrData,
                               onQrGenerated: _onQrGenerated,
                             ),
                           ),
                         ),
                       ],
                     ),
-                  ),
-                ],
-              );
-            },
-          ),
-        ),
+            ),
+          );
+        },
       ),
     );
   }
 }
 
-class _VietQrAnimatedView extends StatefulWidget {
+class _AnimatedVietQrWidget extends StatefulWidget {
   final VietQrData qrData;
 
-  const _VietQrAnimatedView({
-    required this.qrData,
-  });
+  const _AnimatedVietQrWidget({required this.qrData});
 
   @override
-  State<_VietQrAnimatedView> createState() => _VietQrAnimatedViewState();
+  State<_AnimatedVietQrWidget> createState() => _AnimatedVietQrWidgetState();
 }
 
-class _VietQrAnimatedViewState extends State<_VietQrAnimatedView>
+class _AnimatedVietQrWidgetState extends State<_AnimatedVietQrWidget>
     with SingleTickerProviderStateMixin {
   late AnimationController _animationController;
   late Animation<double> _scaleAnimation;
@@ -136,20 +134,16 @@ class _VietQrAnimatedViewState extends State<_VietQrAnimatedView>
       duration: const Duration(milliseconds: 300),
       vsync: this,
     );
-    _scaleAnimation = Tween<double>(
-      begin: 0.8,
-      end: 1.0,
-    ).animate(CurvedAnimation(
-      parent: _animationController,
-      curve: Curves.elasticOut,
-    ));
+    _scaleAnimation = Tween<double>(begin: 0.8, end: 1.0).animate(
+      CurvedAnimation(parent: _animationController, curve: Curves.elasticOut),
+    );
 
     _animationController.forward();
     _previousQrData = widget.qrData;
   }
 
   @override
-  void didUpdateWidget(_VietQrAnimatedView oldWidget) {
+  void didUpdateWidget(_AnimatedVietQrWidget oldWidget) {
     super.didUpdateWidget(oldWidget);
 
     if (widget.qrData != _previousQrData) {
@@ -161,19 +155,12 @@ class _VietQrAnimatedViewState extends State<_VietQrAnimatedView>
 
   @override
   Widget build(BuildContext context) {
-    return Container(
-      padding: const EdgeInsets.all(24),
+    return Padding(
+      padding: const EdgeInsets.all(16),
       child: Column(
+        spacing: 16,
         mainAxisSize: MainAxisSize.min,
         children: [
-          const Text(
-            'Generated VietQR Code',
-            style: TextStyle(
-              fontSize: 20,
-              fontWeight: FontWeight.bold,
-            ),
-          ),
-          const SizedBox(height: 16),
           AnimatedBuilder(
             animation: _scaleAnimation,
             builder: (context, child) {
@@ -188,23 +175,39 @@ class _VietQrAnimatedViewState extends State<_VietQrAnimatedView>
                     borderRadius: BorderRadius.circular(16),
                     boxShadow: [
                       BoxShadow(
-                        color: Colors.black.withOpacity(0.1),
+                        color: Colors.black.withValues(alpha: 0.1),
                         blurRadius: 20,
                         offset: const Offset(0, 8),
                       ),
                     ],
                   ),
-                  child: VietQrWidget(data: widget.qrData),
+                  child: VietQrWidget(
+                    data: widget.qrData,
+                    embeddedImage: EmbeddedImage(
+                      scale: 0.2,
+                      image: AssetImage("assets/flutter.png"),
+                    ),
+                    errorBuilder: (context, error, stackTrace) {
+                      return Center(
+                        child: Text(
+                          error.toString(),
+                          style:
+                              Theme.of(context).textTheme.bodyMedium?.copyWith(
+                                    color: Colors.red,
+                                  ),
+                        ),
+                      );
+                    },
+                  ),
                 ),
               );
             },
           ),
-          const SizedBox(height: 16),
           Text(
             'QR Code for ${widget.qrData.merchantName.isNotEmpty ? widget.qrData.merchantName : "Payment"}',
-            style: Theme.of(context).textTheme.bodyMedium?.copyWith(
-              color: Colors.grey[600],
-            ),
+            style: Theme.of(
+              context,
+            ).textTheme.bodyMedium?.copyWith(color: Colors.grey[600]),
             textAlign: TextAlign.center,
           ),
         ],
@@ -220,9 +223,11 @@ class _VietQrAnimatedViewState extends State<_VietQrAnimatedView>
 }
 
 class _VietQrSettings extends StatefulWidget {
+  final VietQrData initialData;
   final ValueChanged<VietQrData> onQrGenerated;
 
   const _VietQrSettings({
+    required this.initialData,
     required this.onQrGenerated,
   });
 
@@ -232,11 +237,36 @@ class _VietQrSettings extends StatefulWidget {
 
 class _VietQrSettingsState extends State<_VietQrSettings> {
   final TextEditingController _amountController = TextEditingController();
-  final TextEditingController _accountController = TextEditingController(text: '0123456789');
-  final TextEditingController _merchantNameController = TextEditingController(text: 'Nguyen Van A');
-  final TextEditingController _descriptionController = TextEditingController(text: 'Payment for service');
-
+  final TextEditingController _accountController = TextEditingController();
+  final TextEditingController _merchantNameController = TextEditingController();
+  final TextEditingController _descriptionController = TextEditingController();
   SupportedBank _selectedBank = SupportedBank.vietcombank;
+
+  @override
+  void initState() {
+    setValues();
+    super.initState();
+  }
+
+  @override
+  void didUpdateWidget(covariant _VietQrSettings oldWidget) {
+    if (oldWidget.initialData != widget.initialData) {
+      setValues();
+    }
+    super.didUpdateWidget(oldWidget);
+  }
+
+  void setValues() {
+    _amountController.text = widget.initialData.amount;
+    _accountController.text =
+        widget.initialData.merchantAccInfo.beneficiaryOrgData.bankAccount;
+    _merchantNameController.text = widget.initialData.merchantName;
+    _descriptionController.text = widget.initialData.additional.purpose;
+    _selectedBank = SupportedBank.fromBinCode(
+          widget.initialData.merchantAccInfo.beneficiaryOrgData.bankBinCode,
+        ) ??
+        SupportedBank.vietcombank;
+  }
 
   void _generateQrCode() {
     if (_accountController.text.trim().isEmpty) {
@@ -268,16 +298,16 @@ class _VietQrSettingsState extends State<_VietQrSettings> {
     return Padding(
       padding: const EdgeInsets.all(24),
       child: Column(
+        mainAxisSize: MainAxisSize.min,
         crossAxisAlignment: CrossAxisAlignment.stretch,
         children: [
           Text(
-            'QR Code Configuration',
-            style: Theme.of(context).textTheme.headlineSmall?.copyWith(
-              fontWeight: FontWeight.bold,
-            ),
+            'QR Configuration',
+            style: Theme.of(
+              context,
+            ).textTheme.titleLarge?.copyWith(fontWeight: FontWeight.w600),
           ),
           const SizedBox(height: 24),
-
           _buildSection(
             context,
             title: 'Bank Information',
@@ -297,66 +327,46 @@ class _VietQrSettingsState extends State<_VietQrSettings> {
                   );
                 }).toList(),
                 onChanged: (bank) {
-                  if (bank != null) {
-                    setState(() {
-                      _selectedBank = bank;
-                    });
-                  }
+                  if (bank == null) return;
+                  _selectedBank = bank;
                 },
               ),
               const SizedBox(height: 16),
-              TextFormField(
+              _buildTextField(
                 controller: _accountController,
-                decoration: const InputDecoration(
-                  labelText: 'Bank Account Number',
-                  border: OutlineInputBorder(),
-                  prefixIcon: Icon(Icons.credit_card),
-                ),
+                label: 'Bank Account Number',
+                icon: Icons.credit_card,
               ),
             ],
           ),
-
           const SizedBox(height: 24),
-
           _buildSection(
             context,
             title: 'Payment Details',
             icon: Icons.payment,
             children: [
-              TextFormField(
+              _buildTextField(
                 controller: _amountController,
-                decoration: const InputDecoration(
-                  labelText: 'Amount (VND)',
-                  border: OutlineInputBorder(),
-                  prefixIcon: Icon(Icons.attach_money),
-                  suffixText: 'VND',
-                ),
+                label: 'Amount (VND)',
+                icon: Icons.attach_money,
                 keyboardType: TextInputType.number,
               ),
               const SizedBox(height: 16),
-              TextFormField(
+              _buildTextField(
                 controller: _merchantNameController,
-                decoration: const InputDecoration(
-                  labelText: 'Merchant Name',
-                  border: OutlineInputBorder(),
-                  prefixIcon: Icon(Icons.store),
-                ),
+                label: 'Merchant Name',
+                icon: Icons.store,
               ),
               const SizedBox(height: 16),
-              TextFormField(
+              _buildTextField(
                 controller: _descriptionController,
-                decoration: const InputDecoration(
-                  labelText: 'Payment Description',
-                  border: OutlineInputBorder(),
-                  prefixIcon: Icon(Icons.description),
-                ),
+                label: 'Payment Description',
+                icon: Icons.description,
                 maxLines: 2,
               ),
             ],
           ),
-
           const SizedBox(height: 32),
-
           ElevatedButton.icon(
             onPressed: _generateQrCode,
             icon: const Icon(Icons.qr_code),
@@ -371,12 +381,13 @@ class _VietQrSettingsState extends State<_VietQrSettings> {
   }
 
   Widget _buildSection(
-      BuildContext context, {
-        required String title,
-        required IconData icon,
-        required List<Widget> children,
-      }) {
+    BuildContext context, {
+    required String title,
+    required IconData icon,
+    required List<Widget> children,
+  }) {
     return Column(
+      mainAxisSize: MainAxisSize.min,
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
         Row(
@@ -386,15 +397,34 @@ class _VietQrSettingsState extends State<_VietQrSettings> {
             Text(
               title,
               style: Theme.of(context).textTheme.titleMedium?.copyWith(
-                fontWeight: FontWeight.w600,
-                color: Theme.of(context).primaryColor,
-              ),
+                    fontWeight: FontWeight.w600,
+                    color: Theme.of(context).primaryColor,
+                  ),
             ),
           ],
         ),
         const SizedBox(height: 12),
         ...children,
       ],
+    );
+  }
+
+  TextField _buildTextField({
+    required TextEditingController controller,
+    required String label,
+    required IconData icon,
+    int maxLines = 1,
+    TextInputType keyboardType = TextInputType.text,
+  }) {
+    return TextField(
+      controller: controller,
+      decoration: InputDecoration(
+        labelText: label,
+        border: const OutlineInputBorder(),
+        prefixIcon: Icon(icon),
+      ),
+      maxLines: maxLines,
+      keyboardType: keyboardType,
     );
   }
 
@@ -406,4 +436,42 @@ class _VietQrSettingsState extends State<_VietQrSettings> {
     _descriptionController.dispose();
     super.dispose();
   }
+}
+
+void showSettingsBottomSheet(
+  BuildContext context, {
+  required VietQrData initialData,
+  required ValueChanged<VietQrData> onQrGenerated,
+}) {
+  showModalBottomSheet(
+    context: context,
+    isScrollControlled: true,
+    shape: const RoundedRectangleBorder(
+      borderRadius: BorderRadius.vertical(top: Radius.circular(16)),
+    ),
+    builder: (context) {
+      final bottomPadding = MediaQuery.of(context).viewInsets.bottom;
+      return DraggableScrollableSheet(
+        initialChildSize: 0.8,
+        minChildSize: 0.75,
+        maxChildSize: 0.8,
+        expand: false,
+        builder: (context, scrollController) {
+          return Padding(
+            padding: EdgeInsets.only(bottom: bottomPadding),
+            child: SingleChildScrollView(
+              controller: scrollController,
+              child: _VietQrSettings(
+                initialData: initialData,
+                onQrGenerated: (qrData) {
+                  Navigator.pop(context);
+                  onQrGenerated(qrData);
+                },
+              ),
+            ),
+          );
+        },
+      );
+    },
+  );
 }
