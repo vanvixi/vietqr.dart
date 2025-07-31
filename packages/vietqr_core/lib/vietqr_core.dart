@@ -1,6 +1,5 @@
-/// Support for doing something awesome.
-///
-/// More dartdocs go here.
+/// VietQR Core Library
+/// This library provides core functionalities for encoding, decoding and validating VietQR data.
 library;
 
 // Export enums and constants
