@@ -1,3 +1,7 @@
+## 0.2.4
+
+- Update documentation and README.
+
 ## 0.2.3
 
 - Downgrade Dart SDK to version 3.5.0 to extend support.
