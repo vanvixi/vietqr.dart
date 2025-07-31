@@ -23,8 +23,7 @@ A Flutter UI widget to display VietQR codes. Built on top of [vietqr_core](https
 If you want to say thank you, star us on GitHub or like us on pub.dev.
 
 <p align="center">
-  <img src="https://raw.githubusercontent.com/vanvixi/vietqr.dart/main/packages/vietqr_widget/images/demo.webp
-" alt="VietQR Widget Demo" width="400"/>
+  <img src="https://raw.githubusercontent.com/vanvixi/vietqr.dart/main/packages/vietqr_widget/images/demo.webp" alt="VietQR Widget Demo" width="400"/>
 </p>
 
 ## Usage
