@@ -1,8 +1,15 @@
 # VietQR Widget
 
+<p align="left">
+  <a href="https://pub.dev/packages/vietqr_widget"><img src="https://img.shields.io/pub/v/vietqr_widget.svg" alt="Pub"></a>
+  <a href="https://pub.dev/packages/vietqr_widget/score"><img src="https://img.shields.io/pub/likes/vietqr_widget?logo=dart" alt="Likes on pub.dev"></a>
+  <a href="https://github.com/promops/vietqr_widget"><img src="https://img.shields.io/github/stars/vanvixi/vietqr.dart.svg?style=flat&logo=github&colorB=deeppink&label=stars" alt="Star on Github"></a>
+  <a href="https://opensource.org/licenses/MIT"><img src="https://img.shields.io/badge/license-MIT-purple.svg" alt="License: MIT"></a>
+</p>
+
 Ngôn ngữ: [English](README.md) | Tiếng Việt
 
-Widget Flutter để hiển thị mã QR VietQR. Được xây dựng dựa trên [vietqr_core](../vietqr_core) để mã hóa và [pretty_qr_code](https://pub.dev/packages/pretty_qr_code) để render mã QR đẹp mắt.
+Widget Flutter để hiển thị mã QR VietQR. Được xây dựng dựa trên [vietqr_core](https://pub.dev/packages/vietqr_core) để mã hóa và [pretty_qr_code](https://pub.dev/packages/pretty_qr_code) để render mã QR đẹp mắt.
 
 ## Tính năng
 
@@ -134,7 +141,7 @@ final dynamicQr = VietQrData(
 
 ## Ứng dụng ví dụ
 
-Để xem ví dụ hoàn chỉnh với tạo mã QR tương tác, hãy xem thư mục [example](example/) trong package này.
+Để xem ví dụ hoàn chỉnh với tạo mã QR tương tác, hãy xem thư mục [example](https://github.com/vanvixi/vietqr.dart/blob/main/packages/vietqr_widget/example/lib/main.dart) trong package này.
 
 ## Đóng góp
 

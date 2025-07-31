@@ -1,8 +1,15 @@
 # VietQR Widget
 
+<p align="left">
+  <a href="https://pub.dev/packages/vietqr_widget"><img src="https://img.shields.io/pub/v/vietqr_widget.svg" alt="Pub"></a>
+  <a href="https://pub.dev/packages/vietqr_widget/score"><img src="https://img.shields.io/pub/likes/vietqr_widget?logo=dart" alt="Likes on pub.dev"></a>
+  <a href="https://github.com/promops/vietqr_widget"><img src="https://img.shields.io/github/stars/vanvixi/vietqr.dart.svg?style=flat&logo=github&colorB=deeppink&label=stars" alt="Star on Github"></a>
+  <a href="https://opensource.org/licenses/MIT"><img src="https://img.shields.io/badge/license-MIT-purple.svg" alt="License: MIT"></a>
+</p>
+
 Language: English | [Tiếng Việt](README.vi.md)
 
-A Flutter UI widget to display VietQR codes. Built on top of [vietqr_core](../vietqr_core) for encoding and [pretty_qr_code](https://pub.dev/packages/pretty_qr_code) for rendering beautiful QR codes.
+A Flutter UI widget to display VietQR codes. Built on top of [vietqr_core](https://pub.dev/packages/vietqr_core) for encoding and [pretty_qr_code](https://pub.dev/packages/pretty_qr_code) for rendering beautiful QR codes.
 
 ## Features
 
@@ -133,7 +140,7 @@ final dynamicQr = VietQrData(
 
 ## Example App
 
-For a complete example with interactive QR code generation, check out the [example](example/) directory in this package.
+For a complete example with interactive QR code generation, check out the [example](https://github.com/vanvixi/vietqr.dart/blob/main/packages/vietqr_widget/example/lib/main.dart) directory in this package.
 
 ## Contributing
 
