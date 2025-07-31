@@ -4,7 +4,8 @@ import 'package:vietqr_widget/vietqr_widget.dart';
 
 void main() {
   group('VietQrWidget Tests', () {
-    testWidgets('VietQrWidget renders without error', (WidgetTester tester) async {
+    testWidgets('VietQrWidget renders without error',
+        (WidgetTester tester) async {
       final vietQrData = VietQrData(
         bankBinCode: SupportedBank.vietcombank,
         bankAccount: '0123456789',
@@ -26,7 +27,8 @@ void main() {
       expect(find.byType(VietQrWidget), findsOneWidget);
     });
 
-    testWidgets('VietQrWidget shows error builder on invalid data', (WidgetTester tester) async {
+    testWidgets('VietQrWidget shows error builder on invalid data',
+        (WidgetTester tester) async {
       final invalidData = VietQrData(
         bankBinCode: SupportedBank.vietcombank,
         bankAccount: '',
