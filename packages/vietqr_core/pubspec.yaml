@@ -2,8 +2,8 @@ name: vietqr_core
 resolution: workspace
 description: A pure Dart library for encoding and decoding VietQR data according to the EMVCo standard. Suitable for both client and server environments.
 version: 0.2.3
-homepage: https://github.com/vanvixi/vietqr.dart/tree/main/packages/vietqr_core
-repository: https://github.com/vanvixi/vietqr.dart
+homepage: https://github.com/vanvixi/vietqr.dart
+repository: https://github.com/vanvixi/vietqr.dart/tree/main/packages/vietqr_core
 issue_tracker: https://github.com/vanvixi/vietqr.dart/issues
 
 environment:
