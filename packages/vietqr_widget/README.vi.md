@@ -23,7 +23,8 @@ Widget Flutter để hiển thị mã QR VietQR. Được xây dựng dựa trê
 Nếu bạn muốn cảm ơn, hãy star cho chúng tôi trên GitHub hoặc like trên pub.dev.
 
 <p align="center">
-  <img src="images/demo.webp" alt="VietQR Widget Demo" width="400"/>
+  <img src="https://raw.githubusercontent.com/vanvixi/vietqr.dart/main/packages/vietqr_widget/images/demo.webp
+" alt="VietQR Widget Demo" width="400"/>
 </p>
 
 ## Cách sử dụng
