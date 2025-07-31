@@ -202,12 +202,8 @@ extension VietQrDataValueCopy<$R, $Out>
 
 abstract class VietQrDataCopyWith<$R, $In extends VietQrData, $Out>
     implements ClassCopyWith<$R, $In, $Out> {
-  MerchantAccountInfoDataCopyWith<
-    $R,
-    MerchantAccountInfoData,
-    MerchantAccountInfoData
-  >
-  get merchantAccInfo;
+  MerchantAccountInfoDataCopyWith<$R, MerchantAccountInfoData,
+      MerchantAccountInfoData> get merchantAccInfo;
   AdditionalDataCopyWith<$R, AdditionalData, AdditionalData> get additional;
   $R call({
     String? version,
@@ -236,18 +232,15 @@ class _VietQrDataCopyWithImpl<$R, $Out>
   late final ClassMapperBase<VietQrData> $mapper =
       VietQrDataMapper.ensureInitialized();
   @override
-  MerchantAccountInfoDataCopyWith<
-    $R,
-    MerchantAccountInfoData,
-    MerchantAccountInfoData
-  >
-  get merchantAccInfo =>
-      $value.merchantAccInfo.copyWith.$chain((v) => call(merchantAccInfo: v));
+  MerchantAccountInfoDataCopyWith<$R, MerchantAccountInfoData,
+          MerchantAccountInfoData>
+      get merchantAccInfo => $value.merchantAccInfo.copyWith
+          .$chain((v) => call(merchantAccInfo: v));
   @override
   AdditionalDataCopyWith<$R, AdditionalData, AdditionalData> get additional =>
       ($value.additional as AdditionalData).copyWith.$chain(
-        (v) => call(additional: v),
-      );
+            (v) => call(additional: v),
+          );
   @override
   $R call({
     Object? version = $none,
@@ -263,42 +256,46 @@ class _VietQrDataCopyWithImpl<$R, $Out>
     Object? merchantCity = $none,
     Object? postalCode = $none,
     Object? additional = $none,
-  }) => $apply(
-    FieldCopyWithData({
-      if (version != $none) #version: version,
-      if (merchantAccInfo != null) #merchantAccInfo: merchantAccInfo,
-      if (merchantCategory != $none) #merchantCategory: merchantCategory,
-      if (currency != $none) #currency: currency,
-      if (amount != $none) #amount: amount,
-      if (tipOrConvenience != $none) #tipOrConvenience: tipOrConvenience,
-      if (feeFixed != $none) #feeFixed: feeFixed,
-      if (feePercentage != $none) #feePercentage: feePercentage,
-      if (countryCode != null) #countryCode: countryCode,
-      if (merchantName != $none) #merchantName: merchantName,
-      if (merchantCity != $none) #merchantCity: merchantCity,
-      if (postalCode != $none) #postalCode: postalCode,
-      if (additional != $none) #additional: additional,
-    }),
-  );
+  }) =>
+      $apply(
+        FieldCopyWithData({
+          if (version != $none) #version: version,
+          if (merchantAccInfo != null) #merchantAccInfo: merchantAccInfo,
+          if (merchantCategory != $none) #merchantCategory: merchantCategory,
+          if (currency != $none) #currency: currency,
+          if (amount != $none) #amount: amount,
+          if (tipOrConvenience != $none) #tipOrConvenience: tipOrConvenience,
+          if (feeFixed != $none) #feeFixed: feeFixed,
+          if (feePercentage != $none) #feePercentage: feePercentage,
+          if (countryCode != null) #countryCode: countryCode,
+          if (merchantName != $none) #merchantName: merchantName,
+          if (merchantCity != $none) #merchantCity: merchantCity,
+          if (postalCode != $none) #postalCode: postalCode,
+          if (additional != $none) #additional: additional,
+        }),
+      );
   @override
   VietQrData $make(CopyWithData data) => VietQrData.custom(
-    version: data.get(#version, or: $value.version),
-    merchantAccInfo: data.get(#merchantAccInfo, or: $value.merchantAccInfo),
-    merchantCategory: data.get(#merchantCategory, or: $value.merchantCategory),
-    currency: data.get(#currency, or: $value.currency),
-    amount: data.get(#amount, or: $value.amount),
-    tipOrConvenience: data.get(#tipOrConvenience, or: $value.tipOrConvenience),
-    feeFixed: data.get(#feeFixed, or: $value.feeFixed),
-    feePercentage: data.get(#feePercentage, or: $value.feePercentage),
-    countryCode: data.get(#countryCode, or: $value.countryCode),
-    merchantName: data.get(#merchantName, or: $value.merchantName),
-    merchantCity: data.get(#merchantCity, or: $value.merchantCity),
-    postalCode: data.get(#postalCode, or: $value.postalCode),
-    additional: data.get(#additional, or: $value.additional),
-  );
+        version: data.get(#version, or: $value.version),
+        merchantAccInfo: data.get(#merchantAccInfo, or: $value.merchantAccInfo),
+        merchantCategory:
+            data.get(#merchantCategory, or: $value.merchantCategory),
+        currency: data.get(#currency, or: $value.currency),
+        amount: data.get(#amount, or: $value.amount),
+        tipOrConvenience:
+            data.get(#tipOrConvenience, or: $value.tipOrConvenience),
+        feeFixed: data.get(#feeFixed, or: $value.feeFixed),
+        feePercentage: data.get(#feePercentage, or: $value.feePercentage),
+        countryCode: data.get(#countryCode, or: $value.countryCode),
+        merchantName: data.get(#merchantName, or: $value.merchantName),
+        merchantCity: data.get(#merchantCity, or: $value.merchantCity),
+        postalCode: data.get(#postalCode, or: $value.postalCode),
+        additional: data.get(#additional, or: $value.additional),
+      );
 
   @override
   VietQrDataCopyWith<$R2, VietQrData, $Out2> $chain<$R2, $Out2>(
     Then<$Out2, $R2> t,
-  ) => _VietQrDataCopyWithImpl<$R2, $Out2>($value, $cast, t);
+  ) =>
+      _VietQrDataCopyWithImpl<$R2, $Out2>($value, $cast, t);
 }

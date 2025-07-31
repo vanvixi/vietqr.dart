@@ -137,11 +137,12 @@ mixin AdditionalDataMappable {
   }
 
   AdditionalDataCopyWith<AdditionalData, AdditionalData, AdditionalData>
-  get copyWith => _AdditionalDataCopyWithImpl<AdditionalData, AdditionalData>(
-    this as AdditionalData,
-    $identity,
-    $identity,
-  );
+      get copyWith =>
+          _AdditionalDataCopyWithImpl<AdditionalData, AdditionalData>(
+            this as AdditionalData,
+            $identity,
+            $identity,
+          );
   @override
   String toString() {
     return AdditionalDataMapper.ensureInitialized().stringifyValue(
@@ -208,34 +209,36 @@ class _AdditionalDataCopyWithImpl<$R, $Out>
     String? terminalLabel,
     String? purpose,
     String? consumerRequest,
-  }) => $apply(
-    FieldCopyWithData({
-      if (billNumber != null) #billNumber: billNumber,
-      if (mobileNumber != null) #mobileNumber: mobileNumber,
-      if (storeLabel != null) #storeLabel: storeLabel,
-      if (loyaltyNumber != null) #loyaltyNumber: loyaltyNumber,
-      if (referenceLabel != null) #referenceLabel: referenceLabel,
-      if (customerLabel != null) #customerLabel: customerLabel,
-      if (terminalLabel != null) #terminalLabel: terminalLabel,
-      if (purpose != null) #purpose: purpose,
-      if (consumerRequest != null) #consumerRequest: consumerRequest,
-    }),
-  );
+  }) =>
+      $apply(
+        FieldCopyWithData({
+          if (billNumber != null) #billNumber: billNumber,
+          if (mobileNumber != null) #mobileNumber: mobileNumber,
+          if (storeLabel != null) #storeLabel: storeLabel,
+          if (loyaltyNumber != null) #loyaltyNumber: loyaltyNumber,
+          if (referenceLabel != null) #referenceLabel: referenceLabel,
+          if (customerLabel != null) #customerLabel: customerLabel,
+          if (terminalLabel != null) #terminalLabel: terminalLabel,
+          if (purpose != null) #purpose: purpose,
+          if (consumerRequest != null) #consumerRequest: consumerRequest,
+        }),
+      );
   @override
   AdditionalData $make(CopyWithData data) => AdditionalData(
-    billNumber: data.get(#billNumber, or: $value.billNumber),
-    mobileNumber: data.get(#mobileNumber, or: $value.mobileNumber),
-    storeLabel: data.get(#storeLabel, or: $value.storeLabel),
-    loyaltyNumber: data.get(#loyaltyNumber, or: $value.loyaltyNumber),
-    referenceLabel: data.get(#referenceLabel, or: $value.referenceLabel),
-    customerLabel: data.get(#customerLabel, or: $value.customerLabel),
-    terminalLabel: data.get(#terminalLabel, or: $value.terminalLabel),
-    purpose: data.get(#purpose, or: $value.purpose),
-    consumerRequest: data.get(#consumerRequest, or: $value.consumerRequest),
-  );
+        billNumber: data.get(#billNumber, or: $value.billNumber),
+        mobileNumber: data.get(#mobileNumber, or: $value.mobileNumber),
+        storeLabel: data.get(#storeLabel, or: $value.storeLabel),
+        loyaltyNumber: data.get(#loyaltyNumber, or: $value.loyaltyNumber),
+        referenceLabel: data.get(#referenceLabel, or: $value.referenceLabel),
+        customerLabel: data.get(#customerLabel, or: $value.customerLabel),
+        terminalLabel: data.get(#terminalLabel, or: $value.terminalLabel),
+        purpose: data.get(#purpose, or: $value.purpose),
+        consumerRequest: data.get(#consumerRequest, or: $value.consumerRequest),
+      );
 
   @override
   AdditionalDataCopyWith<$R2, AdditionalData, $Out2> $chain<$R2, $Out2>(
     Then<$Out2, $R2> t,
-  ) => _AdditionalDataCopyWithImpl<$R2, $Out2>($value, $cast, t);
+  ) =>
+      _AdditionalDataCopyWithImpl<$R2, $Out2>($value, $cast, t);
 }

@@ -23,14 +23,12 @@ class VietQrData extends Data with VietQrDataMappable {
     required this.merchantCategory,
     required this.currency,
     required this.amount,
-
     required this.tipOrConvenience,
     required this.feeFixed,
     required this.feePercentage,
     required this.countryCode,
     required this.merchantName,
     required this.merchantCity,
-
     required this.postalCode,
     required this.additional,
   });
@@ -66,10 +64,9 @@ class VietQrData extends Data with VietQrDataMappable {
     amount ??= '';
     return VietQrData._(
       version: version?.value ?? VietQrVersion.v_01.value,
-      initiationMethod:
-          amount.isEmpty
-              ? PointOfInitiationMethod.dynamicQr.value
-              : PointOfInitiationMethod.staticQr.value,
+      initiationMethod: amount.isEmpty
+          ? PointOfInitiationMethod.dynamicQr.value
+          : PointOfInitiationMethod.staticQr.value,
       merchantAccInfo: MerchantAccountInfoData(
         bankBinCode: bankBinCode,
         bankAccount: bankAccount,
@@ -109,10 +106,9 @@ class VietQrData extends Data with VietQrDataMappable {
     amount ??= '';
     return VietQrData._(
       version: version ?? VietQrVersion.v_01.value,
-      initiationMethod:
-          amount.isEmpty
-              ? PointOfInitiationMethod.dynamicQr.value
-              : PointOfInitiationMethod.staticQr.value,
+      initiationMethod: amount.isEmpty
+          ? PointOfInitiationMethod.dynamicQr.value
+          : PointOfInitiationMethod.staticQr.value,
       merchantAccInfo: merchantAccInfo,
       merchantCategory: merchantCategory ?? '',
       currency: currency ?? VietQrCurrency.vnd.value,

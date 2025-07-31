@@ -34,7 +34,7 @@ class MerchantAccountInfoDataMapper
   static BeneficiaryOrgData _$beneficiaryOrgData(MerchantAccountInfoData v) =>
       v.beneficiaryOrgData;
   static const Field<MerchantAccountInfoData, BeneficiaryOrgData>
-  _f$beneficiaryOrgData = Field('beneficiaryOrgData', _$beneficiaryOrgData);
+      _f$beneficiaryOrgData = Field('beneficiaryOrgData', _$beneficiaryOrgData);
   static String _$serviceCode(MerchantAccountInfoData v) => v.serviceCode;
   static const Field<MerchantAccountInfoData, String> _f$serviceCode = Field(
     'serviceCode',
@@ -79,15 +79,11 @@ mixin MerchantAccountInfoDataMappable {
         .encodeMap<MerchantAccountInfoData>(this as MerchantAccountInfoData);
   }
 
-  MerchantAccountInfoDataCopyWith<
-    MerchantAccountInfoData,
-    MerchantAccountInfoData,
-    MerchantAccountInfoData
-  >
-  get copyWith => _MerchantAccountInfoDataCopyWithImpl<
-    MerchantAccountInfoData,
-    MerchantAccountInfoData
-  >(this as MerchantAccountInfoData, $identity, $identity);
+  MerchantAccountInfoDataCopyWith<MerchantAccountInfoData,
+          MerchantAccountInfoData, MerchantAccountInfoData>
+      get copyWith => _MerchantAccountInfoDataCopyWithImpl<
+              MerchantAccountInfoData, MerchantAccountInfoData>(
+          this as MerchantAccountInfoData, $identity, $identity);
   @override
   String toString() {
     return MerchantAccountInfoDataMapper.ensureInitialized().stringifyValue(
@@ -114,19 +110,18 @@ mixin MerchantAccountInfoDataMappable {
 extension MerchantAccountInfoDataValueCopy<$R, $Out>
     on ObjectCopyWith<$R, MerchantAccountInfoData, $Out> {
   MerchantAccountInfoDataCopyWith<$R, MerchantAccountInfoData, $Out>
-  get $asMerchantAccountInfoData => $base.as(
-    (v, t, t2) => _MerchantAccountInfoDataCopyWithImpl<$R, $Out>(v, t, t2),
-  );
+      get $asMerchantAccountInfoData => $base.as(
+            (v, t, t2) =>
+                _MerchantAccountInfoDataCopyWithImpl<$R, $Out>(v, t, t2),
+          );
 }
 
 abstract class MerchantAccountInfoDataCopyWith<
-  $R,
-  $In extends MerchantAccountInfoData,
-  $Out
->
-    implements ClassCopyWith<$R, $In, $Out> {
+    $R,
+    $In extends MerchantAccountInfoData,
+    $Out> implements ClassCopyWith<$R, $In, $Out> {
   BeneficiaryOrgDataCopyWith<$R, BeneficiaryOrgData, BeneficiaryOrgData>
-  get beneficiaryOrgData;
+      get beneficiaryOrgData;
   $R call({
     String? globalUid,
     BeneficiaryOrgData? beneficiaryOrgData,
@@ -148,21 +143,23 @@ class _MerchantAccountInfoDataCopyWithImpl<$R, $Out>
       MerchantAccountInfoDataMapper.ensureInitialized();
   @override
   BeneficiaryOrgDataCopyWith<$R, BeneficiaryOrgData, BeneficiaryOrgData>
-  get beneficiaryOrgData => $value.beneficiaryOrgData.copyWith.$chain(
-    (v) => call(beneficiaryOrgData: v),
-  );
+      get beneficiaryOrgData => $value.beneficiaryOrgData.copyWith.$chain(
+            (v) => call(beneficiaryOrgData: v),
+          );
   @override
   $R call({
     String? globalUid,
     BeneficiaryOrgData? beneficiaryOrgData,
     String? serviceCode,
-  }) => $apply(
-    FieldCopyWithData({
-      if (globalUid != null) #globalUid: globalUid,
-      if (beneficiaryOrgData != null) #beneficiaryOrgData: beneficiaryOrgData,
-      if (serviceCode != null) #serviceCode: serviceCode,
-    }),
-  );
+  }) =>
+      $apply(
+        FieldCopyWithData({
+          if (globalUid != null) #globalUid: globalUid,
+          if (beneficiaryOrgData != null)
+            #beneficiaryOrgData: beneficiaryOrgData,
+          if (serviceCode != null) #serviceCode: serviceCode,
+        }),
+      );
   @override
   MerchantAccountInfoData $make(CopyWithData data) =>
       MerchantAccountInfoData.custom(
@@ -176,6 +173,6 @@ class _MerchantAccountInfoDataCopyWithImpl<$R, $Out>
 
   @override
   MerchantAccountInfoDataCopyWith<$R2, MerchantAccountInfoData, $Out2>
-  $chain<$R2, $Out2>(Then<$Out2, $R2> t) =>
-      _MerchantAccountInfoDataCopyWithImpl<$R2, $Out2>($value, $cast, t);
+      $chain<$R2, $Out2>(Then<$Out2, $R2> t) =>
+          _MerchantAccountInfoDataCopyWithImpl<$R2, $Out2>($value, $cast, t);
 }

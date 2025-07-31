@@ -67,13 +67,9 @@ mixin BeneficiaryOrgDataMappable {
         .encodeMap<BeneficiaryOrgData>(this as BeneficiaryOrgData);
   }
 
-  BeneficiaryOrgDataCopyWith<
-    BeneficiaryOrgData,
-    BeneficiaryOrgData,
-    BeneficiaryOrgData
-  >
-  get copyWith =>
-      _BeneficiaryOrgDataCopyWithImpl<BeneficiaryOrgData, BeneficiaryOrgData>(
+  BeneficiaryOrgDataCopyWith<BeneficiaryOrgData, BeneficiaryOrgData,
+      BeneficiaryOrgData> get copyWith => _BeneficiaryOrgDataCopyWithImpl<
+          BeneficiaryOrgData, BeneficiaryOrgData>(
         this as BeneficiaryOrgData,
         $identity,
         $identity,
@@ -104,17 +100,13 @@ mixin BeneficiaryOrgDataMappable {
 extension BeneficiaryOrgDataValueCopy<$R, $Out>
     on ObjectCopyWith<$R, BeneficiaryOrgData, $Out> {
   BeneficiaryOrgDataCopyWith<$R, BeneficiaryOrgData, $Out>
-  get $asBeneficiaryOrgData => $base.as(
-    (v, t, t2) => _BeneficiaryOrgDataCopyWithImpl<$R, $Out>(v, t, t2),
-  );
+      get $asBeneficiaryOrgData => $base.as(
+            (v, t, t2) => _BeneficiaryOrgDataCopyWithImpl<$R, $Out>(v, t, t2),
+          );
 }
 
-abstract class BeneficiaryOrgDataCopyWith<
-  $R,
-  $In extends BeneficiaryOrgData,
-  $Out
->
-    implements ClassCopyWith<$R, $In, $Out> {
+abstract class BeneficiaryOrgDataCopyWith<$R, $In extends BeneficiaryOrgData,
+    $Out> implements ClassCopyWith<$R, $In, $Out> {
   $R call({String? bankBinCode, String? bankAccount});
   BeneficiaryOrgDataCopyWith<$R2, $In, $Out2> $chain<$R2, $Out2>(
     Then<$Out2, $R2> t,
@@ -131,19 +123,20 @@ class _BeneficiaryOrgDataCopyWithImpl<$R, $Out>
       BeneficiaryOrgDataMapper.ensureInitialized();
   @override
   $R call({String? bankBinCode, String? bankAccount}) => $apply(
-    FieldCopyWithData({
-      if (bankBinCode != null) #bankBinCode: bankBinCode,
-      if (bankAccount != null) #bankAccount: bankAccount,
-    }),
-  );
+        FieldCopyWithData({
+          if (bankBinCode != null) #bankBinCode: bankBinCode,
+          if (bankAccount != null) #bankAccount: bankAccount,
+        }),
+      );
   @override
   BeneficiaryOrgData $make(CopyWithData data) => BeneficiaryOrgData.custom(
-    bankBinCode: data.get(#bankBinCode, or: $value.bankBinCode),
-    bankAccount: data.get(#bankAccount, or: $value.bankAccount),
-  );
+        bankBinCode: data.get(#bankBinCode, or: $value.bankBinCode),
+        bankAccount: data.get(#bankAccount, or: $value.bankAccount),
+      );
 
   @override
   BeneficiaryOrgDataCopyWith<$R2, BeneficiaryOrgData, $Out2> $chain<$R2, $Out2>(
     Then<$Out2, $R2> t,
-  ) => _BeneficiaryOrgDataCopyWithImpl<$R2, $Out2>($value, $cast, t);
+  ) =>
+      _BeneficiaryOrgDataCopyWithImpl<$R2, $Out2>($value, $cast, t);
 }

@@ -94,11 +94,10 @@ class VietQrEncoder {
       merchantAccInfo.serviceCode,
     );
 
-    final merchantBuffer =
-        StringBuffer()
-          ..write(gUIDField)
-          ..write(beneficiaryOrgField)
-          ..write(serviceField);
+    final merchantBuffer = StringBuffer()
+      ..write(gUIDField)
+      ..write(beneficiaryOrgField)
+      ..write(serviceField);
 
     final merchantAccInfoField = RootField.merchantAccount.toTLV(
       merchantBuffer.toString(),
