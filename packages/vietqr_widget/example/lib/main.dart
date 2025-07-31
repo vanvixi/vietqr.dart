@@ -50,7 +50,6 @@ class _VietQrExampleScreenState extends State<VietQrExampleScreen> {
       child: LayoutBuilder(
         builder: (context, constraints) {
           final isMobile = constraints.maxWidth < 640;
-          final safePadding = MediaQuery.of(context).padding;
 
           return Scaffold(
             resizeToAvoidBottomInset: true,
@@ -71,31 +70,20 @@ class _VietQrExampleScreenState extends State<VietQrExampleScreen> {
             body: Align(
               alignment: Alignment.topCenter,
               child: isMobile
-                  ? Padding(
-                      padding: safePadding.copyWith(top: 0, bottom: 0),
-                      child: _AnimatedVietQrWidget(qrData: _currentQrData),
-                    )
+                  ? _AnimatedVietQrWidget(qrData: _currentQrData)
                   : Row(
                       mainAxisAlignment: MainAxisAlignment.center,
                       crossAxisAlignment: CrossAxisAlignment.start,
                       children: [
                         Flexible(
                           flex: 3,
-                          child: Padding(
-                            padding: EdgeInsets.only(
-                              left: safePadding.left + 24,
-                              right: safePadding.right + 24,
-                              bottom: 24,
-                            ),
-                            child: _AnimatedVietQrWidget(
-                              qrData: _currentQrData,
-                            ),
+                          child: _AnimatedVietQrWidget(
+                            qrData: _currentQrData,
                           ),
                         ),
                         Flexible(
                           flex: 2,
                           child: SingleChildScrollView(
-                            padding: safePadding.copyWith(top: 0),
                             child: _VietQrSettings(
                               initialData: _currentQrData,
                               onQrGenerated: _onQrGenerated,
@@ -296,7 +284,7 @@ class _VietQrSettingsState extends State<_VietQrSettings> {
   @override
   Widget build(BuildContext context) {
     return Padding(
-      padding: const EdgeInsets.all(24),
+      padding: const EdgeInsets.all(16),
       child: Column(
         mainAxisSize: MainAxisSize.min,
         crossAxisAlignment: CrossAxisAlignment.stretch,
