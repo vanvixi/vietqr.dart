@@ -1,19 +1,28 @@
 # VietQR Core
 
+<p align="left">
+  <a href="https://pub.dev/packages/vietqr_core"><img src="https://img.shields.io/pub/v/vietqr_core.svg" alt="Pub"></a>
+  <a href="https://pub.dev/packages/vietqr_core/score"><img src="https://img.shields.io/pub/likes/vietqr_core?logo=dart" alt="Likes on pub.dev"></a>
+  <a href="https://github.com/vanvixi/vietqr.dart"><img src="https://img.shields.io/github/stars/vanvixi/vietqr.dart.svg?style=flat&logo=github&colorB=deeppink&label=stars" alt="Star on Github"></a>
+  <a href="https://opensource.org/licenses/MIT"><img src="https://img.shields.io/badge/license-MIT-purple.svg" alt="License: MIT"></a>
+</p>
+
 Ngôn ngữ: [English](README.md) | Tiếng Việt
 
 Thư viện Dart thuần để mã hóa và giải mã dữ liệu VietQR theo chuẩn EMVCo. Gói này cung cấp các API cấp thấp để tạo mã QR thanh toán theo chuẩn VietQR, phù hợp cho cả môi trường client và server.
 
 ## Tính năng
 
-- ✅ **Triển khai hoàn toàn bằng Dart** – Chạy được trên mọi nền tảng (di động, web, desktop, server)
-- ✅ **Tuân thủ chuẩn VietQR** – Theo đúng chuẩn thanh toán QR tại Việt Nam
-- ✅ **Tuân thủ chuẩn EMVCo** – Phù hợp với đặc tả mã QR của EMVCo
-- ✅ **Mã hóa & Giải mã** – Hỗ trợ đầy đủ cho cả hai chức năng
-- ✅ **Kiểu dữ liệu an toàn (Type-safe)** – Được kiểm tra và xác thực chặt chẽ
-- ✅ **Hỗ trợ 18+ ngân hàng** – Tích hợp sẵn các ngân hàng lớn tại Việt Nam
-- ✅ **Mở rộng dễ dàng** – Cho phép thêm cấu hình ngân hàng tùy chỉnh
-- ✅ **Tài liệu đầy đủ** – Có hướng dẫn và ví dụ chi tiết
+* **Triển khai hoàn toàn bằng Dart** – Chạy được trên mọi nền tảng (di động, web, desktop, server)
+* **Tuân thủ chuẩn VietQR** – Theo đúng chuẩn thanh toán QR tại Việt Nam
+* **Tuân thủ chuẩn EMVCo** – Phù hợp với đặc tả mã QR của EMVCo
+* **Mã hóa & Giải mã** – Hỗ trợ đầy đủ cho cả hai chức năng
+* **Kiểu dữ liệu an toàn (Type-safe)** – Được kiểm tra và xác thực chặt chẽ
+* **Hỗ trợ 18+ ngân hàng** – Tích hợp sẵn các ngân hàng lớn tại Việt Nam
+* **Mở rộng dễ dàng** – Cho phép thêm cấu hình ngân hàng tùy chỉnh
+* **Tài liệu đầy đủ** – Có hướng dẫn và ví dụ chi tiết
+
+Nếu bạn muốn cảm ơn, hãy star cho chúng tôi trên GitHub hoặc like trên pub.dev.
 
 ## Các ngân hàng được hỗ trợ
 
@@ -39,49 +48,53 @@ Gói thư viện đã tích hợp sẵn các ngân hàng phổ biến tại Vi�
 - **BaoViet Bank** (970438)
 - **ABBank** (970425)
 
+Bạn đang tìm kiếm Flutter Widget?
+
+Nếu bạn đang xây dựng ứng dụng Flutter và muốn hiển thị mã VietQR với giao diện đẹp, hãy xem [**vietqr_widget**](https://pub.dev/packages/vietqr_widget) - một Flutter widget sử dụng thư viện này để tạo mã VietQr.
+
 ## Cách sử dụng
+
+Trước tiên, làm theo [hướng dẫn cài đặt package](https://pub.dev/packages/vietqr_core/install) và import thư viện:
 
 ### Ví dụ cơ bản
 
 ```dart
 import 'package:vietqr_core/vietqr_core.dart';
 
-void main() {
-  // Tạo dữ liệu thanh toán VietQR
-  final payment = VietQrData(
-    bankBinCode: SupportedBank.vietcombank,
-    bankAccount: '0123456789',
-    amount: '50000',
-    merchantName: 'John Doe',
-    merchantCity: 'Ho Chi Minh City',
-    additional: const AdditionalData(
-      purpose: 'Thanh toan hoa don #12345',
-    ),
-  );
+// Tạo dữ liệu thanh toán VietQR
+final payment = VietQrData(
+  bankBinCode: SupportedBank.vietcombank,
+  bankAccount: '0123456789',
+  amount: '50000',
+  merchantName: 'John Doe',
+  merchantCity: 'Ho Chi Minh City',
+  additional: const AdditionalData(
+    purpose: 'Thanh toán hóa đơn #12345',
+  ),
+);
 
-  // Mã hóa thành chuỗi QR
-  final qrString = VietQr.encode(payment);
-  print('QR Code: $qrString');
+// Mã hóa thành chuỗi QR
+final qrString = VietQr.encode(payment);
+print('QR Code: $qrString');
 
-  // Giải mã chuỗi QR trở lại dữ liệu
-  final decodedData = VietQr.decode(qrString);
-  print('Số tiền: ${decodedData.amount}');
-  print('Ngân hàn: ${decodedData.merchantAccInfo.beneficiaryOrgData.bankBinCode}');
-}
+// Giải mã chuỗi QR trở lại dữ liệu
+final decodedData = VietQr.decode(qrString);
+print('Số tiền: ${decodedData.amount}');
+print('Ngân hàng: ${decodedData.merchantAccInfo.beneficiaryOrgData.bankBinCode}');
 ```
 
-### Mã QR động (Không có số tiền cố định)
+### Mã QR động (Người dùng nhập số tiền)
 
 ```dart
 // Tạo QR động – người dùng sẽ nhập số tiền khi quét
 final dynamicPayment = VietQrData(
   bankBinCode: SupportedBank.techcombank,
-  bankAccount: '9876543210',
-  merchantName: 'Quan ca phe ABC',
-  merchantCity: 'Hanoi',
+  bankAccount: '0123456789',
+  merchantName: 'Quán cà phê ABC',
+  merchantCity: 'Hà Nội',
   additional: const AdditionalData(
-    purpose: 'Thanh toan ca phe',
-    storeLabel: 'Chi nhanh #001',
+    purpose: 'Thanh toán cà phê',
+    storeLabel: 'Chi nhánh #001',
   ),
 );
 
@@ -136,6 +149,10 @@ final payment = VietQrData.custom(
   ),
 );
 ```
+## Package liên quan
+
+- [**vietqr_widget**](https://pub.dev/packages/vietqr_widget) - Flutter UI widget để hiển thị mã VietQR
+
 ## Tài liệu tham khảo
 - [Định nghĩa các trường](vietqr_field_definitions_en.md)
 - [Tài liệu đặc tả kỹ thuật định dạng](https://vietqr.net/portal-service/download/documents/QR_Format_T&C_v1.5.2_EN_102022.pdf)
@@ -205,7 +222,7 @@ Thư viện có hệ thống kiểm tra hợp lệ mạnh mẽ:
 
 - **Kiểm tra độ dài** của tất cả các trường
 - **Kiểm tra định dạng** cho số tiền và mã
-- **Kiểm tra trường bắt buộcn**
+- **Kiểm tra trường bắt buộc**
 - **Kiểm tra quy tắc nghiệp vụ**
 
 Dữ liệu không hợp lệ sẽ ném các exception cụ thể:
@@ -223,6 +240,7 @@ try {
     bankBinCode: SupportedBank.vietcombank,
     bankAccount: '123', // Quá ngắn
     amount: '50000',
+    merchantName: 'Test Merchant',
   );
   
   final qrString = VietQr.encode(payment);

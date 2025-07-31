@@ -1,19 +1,28 @@
 # VietQR Core
 
+<p align="left">
+  <a href="https://pub.dev/packages/vietqr_core"><img src="https://img.shields.io/pub/v/vietqr_core.svg" alt="Pub"></a>
+  <a href="https://pub.dev/packages/vietqr_core/score"><img src="https://img.shields.io/pub/likes/vietqr_core?logo=dart" alt="Likes on pub.dev"></a>
+  <a href="https://github.com/vanvixi/vietqr.dart"><img src="https://img.shields.io/github/stars/vanvixi/vietqr.dart.svg?style=flat&logo=github&colorB=deeppink&label=stars" alt="Star on Github"></a>
+  <a href="https://opensource.org/licenses/MIT"><img src="https://img.shields.io/badge/license-MIT-purple.svg" alt="License: MIT"></a>
+</p>
+
 Language: English | [Tiếng Việt](README.vi.md)
 
 A pure Dart library for encoding and decoding VietQR data according to the EMVCo standard. This package provides low-level APIs for generating VietQR-compliant payment QR codes suitable for both client and server environments.
 
 ## Features
 
-- ✅ **Pure Dart implementation** – Works on all platforms (mobile, web, desktop, server)
-- ✅ **VietQR compliant** – Follows Vietnamese QR payment standards
-- ✅ **EMVCo compliant** – Adheres to EMVCo QR Code Specification
-- ✅ **Encode & Decode** – Full support for encoding and decoding VietQR data
-- ✅ **Type-safe** – Strong typing with comprehensive validation
-- ✅ **18+ Vietnamese banks** – Built-in support for major Vietnamese banks
-- ✅ **Extensible** – Easy to add custom bank configurations
-- ✅ **Well-documented** – Comprehensive documentation and examples
+* **Pure Dart implementation** – Works on all platforms (mobile, web, desktop, server)
+* **VietQR compliant** – Follows Vietnamese QR payment standards
+* **EMVCo compliant** – Adheres to EMVCo QR Code Specification
+* **Encode & Decode** – Full support for encoding and decoding VietQR data
+* **Type-safe** – Strong typing with comprehensive validation
+* **18+ Vietnamese banks** – Built-in support for major Vietnamese banks
+* **Extensible** – Easy to add custom bank configurations
+* **Well-documented** – Comprehensive documentation and examples
+
+If you want to say thank you, star us on GitHub or like us on pub.dev.
 
 ## Supported Banks
 
@@ -39,35 +48,39 @@ The package includes built-in support for major Vietnamese banks:
 - **BaoViet Bank** (970438)
 - **ABBank** (970425)
 
+## Looking for Flutter Widget?
+
+If you're building a Flutter app and want to display VietQR codes with a beautiful UI, check out [**vietqr_widget**](https://pub.dev/packages/vietqr_widget) - a Flutter widget that uses this library under the hood.
+
 ## Usage
+
+First, follow the [package installation instructions](https://pub.dev/packages/vietqr_core/install) and import the library:
 
 ### Basic Example
 
 ```dart
 import 'package:vietqr_core/vietqr_core.dart';
 
-void main() {
-  // Create VietQR payment data
-  final payment = VietQrData(
-    bankBinCode: SupportedBank.vietcombank,
-    bankAccount: '0123456789',
-    amount: '50000',
-    merchantName: 'John Doe',
-    merchantCity: 'Ho Chi Minh City',
-    additional: const AdditionalData(
-      purpose: 'Payment for invoice #12345',
-    ),
-  );
+// Create VietQR payment data
+final payment = VietQrData(
+  bankBinCode: SupportedBank.vietcombank,
+  bankAccount: '0123456789',
+  amount: '50000',
+  merchantName: 'John Doe',
+  merchantCity: 'Ho Chi Minh City',
+  additional: const AdditionalData(
+    purpose: 'Payment for invoice #12345',
+  ),
+);
 
-  // Encode to QR string
-  final qrString = VietQr.encode(payment);
-  print('QR Code: $qrString');
+// Encode to QR string
+final qrString = VietQr.encode(payment);
+print('QR Code: $qrString');
 
-  // Decode back to data
-  final decodedData = VietQr.decode(qrString);
-  print('Amount: ${decodedData.amount}');
-  print('Bank: ${decodedData.merchantAccInfo.beneficiaryOrgData.bankBinCode}');
-}
+// Decode back to data
+final decodedData = VietQr.decode(qrString);
+print('Amount: ${decodedData.amount}');
+print('Bank: ${decodedData.merchantAccInfo.beneficiaryOrgData.bankBinCode}');
 ```
 
 ### Dynamic QR (No Amount)
@@ -76,7 +89,7 @@ void main() {
 // Create dynamic QR where user enters amount when scanning
 final dynamicPayment = VietQrData(
   bankBinCode: SupportedBank.techcombank,
-  bankAccount: '9876543210',
+  bankAccount: '0123456789',
   merchantName: 'Coffee Shop ABC',
   merchantCity: 'Hanoi',
   additional: const AdditionalData(
@@ -136,6 +149,10 @@ final payment = VietQrData.custom(
   ),
 );
 ```
+## Related Packages
+
+- [**vietqr_widget**](https://pub.dev/packages/vietqr_widget) - Flutter UI widget to display VietQR codes
+
 ## Documentation reference
 - [Field Definitions](vietqr_field_definitions_en.md)
 - [Format Technical Specification](https://vietqr.net/portal-service/download/documents/QR_Format_T&C_v1.5.2_EN_102022.pdf)
@@ -221,8 +238,9 @@ Invalid data will throw specific exceptions:
 try {
   final payment = VietQrData(
     bankBinCode: SupportedBank.vietcombank,
-    bankAccount: '123', // Too short
+    bankAccount: '123', // Too short - will throw exception
     amount: '50000',
+    merchantName: 'Test Merchant',
   );
   
   final qrString = VietQr.encode(payment);
