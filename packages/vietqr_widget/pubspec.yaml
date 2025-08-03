@@ -13,8 +13,8 @@ dependencies:
   flutter:
     sdk: flutter
 
-  vietqr_core: ^0.2.3
-  pretty_qr_code: ^3.4.0
+  vietqr_core: ^0.2.4
+  pretty_qr_code: ^3.5.0
 
 dev_dependencies:
   flutter_test:

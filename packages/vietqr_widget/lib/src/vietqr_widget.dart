@@ -78,9 +78,10 @@ class _VietQrWidgetState extends State<VietQrWidget> {
       data: qrString,
       errorCorrectLevel: QrErrorCorrectLevel.M,
       decoration: PrettyQrDecoration(
-          image: widget.embeddedImage,
-          background: widget.background,
-          shape: const PrettyQrRoundedSymbol(borderRadius: BorderRadius.zero)),
+        image: widget.embeddedImage,
+        background: widget.background,
+        shape: const PrettyQrSquaresSymbol(),
+      ),
       errorBuilder: widget.errorBuilder,
     );
   }
