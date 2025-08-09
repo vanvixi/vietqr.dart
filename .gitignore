@@ -43,6 +43,7 @@ unlinked_spec.ds
 .fvm/
 .env/*
 .env.*
+**/pubspec_overrides.yaml
 
 # Android related
 **/android/**/gradle-wrapper.jar
