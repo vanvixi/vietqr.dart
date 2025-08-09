@@ -4,11 +4,6 @@ publish_to: none
 environment:
   sdk: '>=3.5.0 <4.0.0'
 
-workspace:
-  - packages/vietqr_core
-  - packages/vietqr_image
-  - packages/vietqr_widget
-
 dev_dependencies:
   melos: ^6.3.2
   frontend_server_client: ^4.0.0
