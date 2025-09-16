@@ -38,7 +38,7 @@ check: require-scope format analyze
 
 # 3) Version bump (Conventional Commits respected via melos.yaml)
 version: require-scope
-	$(MELOS) version --scope="$(scope) --no-private"
+	$(MELOS) version --scope="$(scope)" --no-private
 
 # 4) Publish
 publish: check
