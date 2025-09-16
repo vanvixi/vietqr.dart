@@ -1,3 +1,8 @@
+## 0.2.5
+
+ - **REFACTOR**(vietqr_core): remove dart_mappable dependency and implement custom serialization for data classes.
+ - **FEAT**(vietqr_core): add new bank codes and update toString method for better representation.
+
 ## 0.2.4
 
 - Update documentation and README.
