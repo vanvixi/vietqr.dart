@@ -1,5 +1,3 @@
-import 'package:dart_mappable/dart_mappable.dart';
-
 import '../const/const.dart';
 import '../const/supported_bank.dart';
 import '../const/vietqr_enum.dart';
@@ -8,14 +6,11 @@ import 'additional_data.dart';
 import 'data.dart';
 import 'merchant_account_info_data.dart';
 
-part 'vietqr_data.mapper.dart';
-
 /// Data model for VietQR payment information
 ///
 /// This class represents all the necessary information to generate a VietQR
 /// payment QR code according to Vietnamese banking standards.
-@MappableClass()
-class VietQrData extends Data with VietQrDataMappable {
+class VietQrData extends Data {
   const VietQrData._({
     required this.version,
     required this.initiationMethod,
@@ -87,7 +82,6 @@ class VietQrData extends Data with VietQrDataMappable {
   }
 
   /// Create VietQrData with custom parameters
-  @MappableConstructor()
   factory VietQrData.custom({
     String? version,
     required MerchantAccountInfoData merchantAccInfo,
@@ -299,5 +293,110 @@ class VietQrData extends Data with VietQrDataMappable {
         }
         break;
     }
+  }
+
+  /// Create VietQrData from a Map
+  factory VietQrData.fromMap(Map<String, dynamic> map) {
+    return VietQrData.custom(
+      version: map['version'] as String?,
+      merchantAccInfo: MerchantAccountInfoData.fromMap(
+        map['merchantAccInfo'] as Map<String, dynamic>,
+      ),
+      merchantCategory: map['merchantCategory'] as String?,
+      currency: map['currency'] as String?,
+      amount: map['amount'] as String?,
+      tipOrConvenience: map['tipOrConvenience'] as String?,
+      feeFixed: map['feeFixed'] as String?,
+      feePercentage: map['feePercentage'] as String?,
+      countryCode: map['countryCode'] as String? ?? kDefaultCountryCode,
+      merchantName: map['merchantName'] as String?,
+      merchantCity: map['merchantCity'] as String?,
+      postalCode: map['postalCode'] as String?,
+      additional: AdditionalData.fromMap(
+        map['additional'] as Map<String, dynamic>,
+      ),
+    );
+  }
+
+  /// Convert this VietQrData to a Map
+  Map<String, dynamic> toMap() {
+    return {
+      'version': version,
+      'initiationMethod': initiationMethod,
+      'merchantAccInfo': merchantAccInfo.toMap(),
+      'merchantCategory': merchantCategory,
+      'currency': currency,
+      'amount': amount,
+      'tipOrConvenience': tipOrConvenience,
+      'feeFixed': feeFixed,
+      'feePercentage': feePercentage,
+      'countryCode': countryCode,
+      'merchantName': merchantName,
+      'merchantCity': merchantCity,
+      'postalCode': postalCode,
+      'additional': additional.toMap(),
+    };
+  }
+
+  @override
+  String toString() {
+    final buffer = StringBuffer();
+    buffer.write('VietQrData(');
+    buffer.write(' version: $version, ');
+    buffer.write(' initiationMethod: $initiationMethod, ');
+    buffer.write(' merchantAccInfo: $merchantAccInfo, ');
+    buffer.write(' merchantCategory: $merchantCategory, ');
+    buffer.write(' currency: $currency, ');
+    buffer.write(' amount: $amount, ');
+    buffer.write(' tipOrConvenience: $tipOrConvenience, ');
+    buffer.write(' feeFixed: $feeFixed, ');
+    buffer.write(' feePercentage: $feePercentage, ');
+    buffer.write(' countryCode: $countryCode, ');
+    buffer.write(' merchantName: $merchantName, ');
+    buffer.write(' merchantCity: $merchantCity, ');
+    buffer.write(' postalCode: $postalCode, ');
+    buffer.write(' additional: $additional');
+    buffer.write(')');
+    return buffer.toString();
+  }
+
+  @override
+  bool operator ==(Object other) {
+    if (identical(this, other)) return true;
+    return other is VietQrData &&
+        other.version == version &&
+        other.initiationMethod == initiationMethod &&
+        other.merchantAccInfo == merchantAccInfo &&
+        other.merchantCategory == merchantCategory &&
+        other.currency == currency &&
+        other.amount == amount &&
+        other.tipOrConvenience == tipOrConvenience &&
+        other.feeFixed == feeFixed &&
+        other.feePercentage == feePercentage &&
+        other.countryCode == countryCode &&
+        other.merchantName == merchantName &&
+        other.merchantCity == merchantCity &&
+        other.postalCode == postalCode &&
+        other.additional == additional;
+  }
+
+  @override
+  int get hashCode {
+    return Object.hash(
+      version,
+      initiationMethod,
+      merchantAccInfo,
+      merchantCategory,
+      currency,
+      amount,
+      tipOrConvenience,
+      feeFixed,
+      feePercentage,
+      countryCode,
+      merchantName,
+      merchantCity,
+      postalCode,
+      additional,
+    );
   }
 }

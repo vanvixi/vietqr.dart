@@ -1,5 +1,3 @@
-import 'package:dart_mappable/dart_mappable.dart';
-
 import '../const/const.dart';
 import '../const/supported_bank.dart';
 import '../const/vietqr_enum.dart';
@@ -7,12 +5,8 @@ import '../exceptions/vietqr_exceptions.dart';
 import 'beneficiary_org_data.dart';
 import 'data.dart';
 
-part 'merchant_account_info_data.mapper.dart';
-
 /// Represents Merchant Account Information  (Field id: 38)
-@MappableClass()
-class MerchantAccountInfoData extends Data
-    with MerchantAccountInfoDataMappable {
+class MerchantAccountInfoData extends Data {
   const MerchantAccountInfoData._({
     required this.globalUid,
     required this.beneficiaryOrgData,
@@ -36,7 +30,6 @@ class MerchantAccountInfoData extends Data
     );
   }
 
-  @MappableConstructor()
   factory MerchantAccountInfoData.custom({
     String globalUid = kNapasAID,
     required BeneficiaryOrgData beneficiaryOrgData,
@@ -76,4 +69,47 @@ class MerchantAccountInfoData extends Data
       );
     }
   }
+
+  /// Create MerchantAccountInfoData from a Map
+  factory MerchantAccountInfoData.fromMap(Map<String, dynamic> map) {
+    return MerchantAccountInfoData.custom(
+      globalUid: map['globalUid'] as String? ?? kNapasAID,
+      beneficiaryOrgData: BeneficiaryOrgData.fromMap(
+        map['beneficiaryOrgData'] as Map<String, dynamic>,
+      ),
+      serviceCode: map['serviceCode'] as String,
+    );
+  }
+
+  /// Convert this MerchantAccountInfoData to a Map
+  Map<String, dynamic> toMap() {
+    return {
+      'globalUid': globalUid,
+      'beneficiaryOrgData': beneficiaryOrgData.toMap(),
+      'serviceCode': serviceCode,
+    };
+  }
+
+  @override
+  String toString() {
+    final buffer = StringBuffer();
+    buffer.write("MerchantAccountInfoData(");
+    buffer.write(" globalUid: $globalUid, ");
+    buffer.write(" beneficiaryOrgData: $beneficiaryOrgData, ");
+    buffer.write(" serviceCode: $serviceCode");
+    buffer.write(")");
+    return buffer.toString();
+  }
+
+  @override
+  bool operator ==(Object other) {
+    if (identical(this, other)) return true;
+    return other is MerchantAccountInfoData &&
+        other.globalUid == globalUid &&
+        other.beneficiaryOrgData == beneficiaryOrgData &&
+        other.serviceCode == serviceCode;
+  }
+
+  @override
+  int get hashCode => Object.hash(globalUid, beneficiaryOrgData, serviceCode);
 }
