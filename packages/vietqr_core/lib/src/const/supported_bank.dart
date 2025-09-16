@@ -1,61 +1,63 @@
 /// Vietnamese bank codes (BIN codes) for major banks
 enum SupportedBank {
-  /// Vietnam Joint Stock Commercial Bank for Industry and Trade (Ngân hàng TMCP Công Thương Việt Nam)
   vietinbank('970415', 'Vietinbank'),
-
-  /// Joint Stock Commercial Bank For Foreign Trade Of Vietnam (Ngân hàng TMCP Ngoại thương Việt Nam)
   vietcombank('970436', 'Vietcombank'),
-
-  /// Joint Stock Commercial Bank for Investment and Development of Vietnam (Ngân hàng TMCP Đầu tư và Phát triển Việt Nam)
   bidv('970418', 'BIDV'),
-
-  /// Vietnam Bank for Agriculture and Rural Development (Ngân hàng Nông nghiệp và Phát triển Nông thôn Việt Nam)
   agribank('970405', 'Agribank'),
-
-  /// Vietnam Technological and Commercial Joint Stock Bank (Ngân hàng TMCP Kỹ thương Việt Nam)
   techcombank('970407', 'Techcombank'),
-
-  /// Military Commercial Joint Stock Bank (Ngân hàng TMCP Quân đội)
   mbbank('970422', 'MB Bank'),
-
-  /// Asia Commercial Joint Stock Bank (Ngân hàng TMCP Á Châu)
   acb('970416', 'ACB'),
-
-  /// Vietnam Prosperity Joint stock Commercial Bank – Thuong Tin Branch (Ngân hàng TMCP Việt Nam Thịnh Vượng)
   vpbank('970432', 'VPBank'),
-
-  /// Saigon Thuong Tin Commercial Joint Stock Bank (Ngân hàng TMCP Sài Gòn Thương Tín)
   sacombank('970403', 'Sacombank'),
-
-  /// Tien Phong Commercial Joint Stock Bank (Ngân hàng TMCP Tiên Phong)
   tpbank('970423', 'TPBank'),
-
-  /// Vietnam Export Import Commercial Joint - Stock Bank (Ngân hàng TMCP Xuất Nhập khẩu Việt Nam)
   eximbank('970431', 'Eximbank'),
-
-  /// Vietnam Maritime Commercial Joint Stock Bank (Ngân hàng TMCP Hàng Hải)
   msb('970426', 'MSB'),
-
-  /// Nam A Commercial Joint Stock Bank (Ngân hàng TMCP Nam Á)
   namabank('970428', 'Nam A Bank'),
-
-  /// Orient Commercial Joint Stock Bank (Ngân hàng TMCP Phương Đông)
   ocb('970448', 'OCB'),
-
-  /// Southeast Asia Commercial Joint Stock Bank (Ngân hàng TMCP Đông Nam Á)
   seabank('970440', 'SeABank'),
-
-  /// Fortune Vietnam Joint Stock Commercial Bank (Ngân hàng TMCP Bưu Điện Liên Việt)
   lpbank('970449', 'LPBank'),
-
-  /// Vietnam Asia Commercial Joint Stock Bank (Ngân hàng TMCP Việt Á)
   vietabank('970427', 'VietA Bank'),
-
-  /// Bao Viet Joint Stock Commercial Bank (Ngân hàng TMCP Bảo Việt)
   baovietbank('970438', 'BaoViet Bank'),
+  abbank('970425', 'ABBank'),
+  dongabank('970406', 'DongA Bank'),
+  oceanbank('970414', 'OceanBank'),
+  ncb('970419', 'NCB'),
+  shb('970443', 'SHB'),
+  vib('970441', 'VIB'),
+  hdbank('970437', 'HDBank'),
+  scb('970429', 'SCB'),
+  vietbank('970433', 'VietBank'),
+  vietcapitalbank('970454', 'VietCapital Bank'),
+  kienlongbank('970452', 'KienLongBank'),
+  pgbank('970430', 'PGBank'),
+  saigonbank('970400', 'SaigonBank'),
+  pvcombank('970412', 'PVcomBank'),
+  vrb('970421', 'VRB'),
+  indovinabank('970434', 'Indovina Bank'),
+  wooribank('970457', 'Woori Bank'),
+  publicbank('970439', 'Public Bank Vietnam'),
+  hongleongbank('970442', 'Hong Leong Bank'),
+  shinhanbank('970424', 'Shinhan Bank Vietnam'),
+  ibkHanoi('970455', 'IBK Hanoi'),
+  ibkHCM('970456', 'IBK Ho Chi Minh'),
+  cimb('422589', 'CIMB Bank'),
+  uob('970458', 'UOB'),
+  hsbc('458761', 'HSBC Vietnam'),
+  standardchartered('970410', 'Standard Chartered Vietnam'),
+  dbs('796500', 'DBS Bank'),
+  kbank('668888', 'KasikornBank'),
+  vbsp('999888', 'VBSP'),
+  kebHanaHanoi('970467', 'KEB Hana Hanoi'),
+  kebHanaHCM('970466', 'KEB Hana HCM'),
+  liobank('963369', 'Liobank'),
+  citibank('533948', 'Citibank Vietnam'),
+  gpbank('970408', 'GPBank'),
+  bacabank('970409', 'BacABank'),
 
-  /// An Binh Commercial Joint Stock Bank (Ngân hàng TMCP An Bình)
-  abbank('970425', 'ABBank');
+  // Non-bank financial institutions
+  vnptMoney('971011', 'VNPT Money'),
+  mafc('977777', 'Mirae Asset Finance'),
+  mcredit('970470', 'Mcredit');
 
   const SupportedBank(this.binCode, this.displayName);
 
@@ -74,5 +76,5 @@ enum SupportedBank {
   }
 
   @override
-  String toString() => displayName;
+  String toString() => 'BIN: $binCode, Name: $displayName';
 }
