@@ -17,7 +17,7 @@ require-scope:
 	fi
 
 # 1) Setup / bootstrap
-bootstrap:
+melos-boot:
 	@echo ">> Cleaning overrides & bootstrapping workspace"
 	find . -name "pubspec_overrides.yaml" -delete
 	$(MELOS) clean
@@ -38,20 +38,20 @@ check: require-scope format analyze
 
 # 3) Version bump (Conventional Commits respected via melos.yaml)
 version: require-scope
-	$(MELOS) version --no-private --scope="$(scope)"
+	$(MELOS) version --scope="$(scope) --no-private"
 
-# 4) Publish (always runs checks first, scoped)
+# 4) Publish
 publish: check
-	$(MELOS) publish --no-private --scope="$(scope)" --yes
+	$(MELOS) publish --scope="$(scope)" --no-private
 
-publish-dry: check
-	$(MELOS) publish --dry-run --no-private --scope="$(scope)"
+publish-no-dry:
+	$(MELOS) publish --scope="$(scope)" --no-dry-run --no-private --yes
 
 # 5) Utilities
 list:
 	$(MELOS) list
 
-tags:
+push-tags:
 	git push origin --tags
 
 clean:
