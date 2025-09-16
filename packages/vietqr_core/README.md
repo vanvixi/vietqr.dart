@@ -123,7 +123,7 @@ final payment = VietQrData.custom(
 ```
 ### Using with Flutter
 
-#### Recommended: Use VietQR Widget
+#### Recommended: Use [**VietQR Widget**](https://pub.dev/packages/vietqr_widget)
 
 For the best development experience with seamless integration, we recommend using our [**vietqr_widget**](https://pub.dev/packages/vietqr_widget) package which provides a ready-to-use Flutter widget
 

@@ -170,10 +170,6 @@ class SimpleQrCode extends StatelessWidget {
 - [Định nghĩa các trường](vietqr_field_definitions_en.md)
 - [Tài liệu đặc tả kỹ thuật định dạng](https://vietqr.net/portal-service/download/documents/QR_Format_T&C_v1.5.2_EN_102022.pdf)
 
-## Tài liệu tham khảo
-- [Định nghĩa các trường](vietqr_field_definitions_en.md)
-- [Tài liệu đặc tả kỹ thuật định dạng](https://vietqr.net/portal-service/download/documents/QR_Format_T&C_v1.5.2_EN_102022.pdf)
-
 ## API Reference
 
 ### VietQr Class
