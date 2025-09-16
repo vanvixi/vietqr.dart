@@ -141,9 +141,49 @@ final payment = VietQrData.custom(
   ),
 );
 ```
-## Related Packages
+### Using with Flutter
 
-- [**vietqr_widget**](https://pub.dev/packages/vietqr_widget) - Flutter UI widget to display VietQR codes
+#### Recommended: Use VietQR Widget
+
+For the best development experience with seamless integration, we recommend using our [**vietqr_widget**](https://pub.dev/packages/vietqr_widget) package which provides a ready-to-use Flutter widget
+
+#### Alternative: Manual Integration with qr_flutter
+
+If you prefer not to use `vietqr_widget`, here's a simple example combining `vietqr_core` with `qr_flutter`:
+
+```dart
+import 'package:flutter/material.dart';
+import 'package:qr_flutter/qr_flutter.dart';
+import 'package:vietqr_core/vietqr_core.dart';
+
+class SimpleQrCode extends StatelessWidget {
+  const SimpleQrCode({super.key});
+
+  @override
+  Widget build(BuildContext context) {
+    final payment = VietQrData(
+      bankBinCode: SupportedBank.vietcombank,
+      bankAccount: 'v9x',
+      merchantName: 'VietQR Widget',
+      merchantCity: 'Hanoi',
+      additional: const AdditionalData(purpose: 'Coffee payment'),
+    );
+
+    final qrString = VietQr.encode(payment);
+
+    return Scaffold(
+      appBar: AppBar(title: Text('VietQR Payment')),
+      body: Center(
+        child: QrImageView(
+          data: qrString,
+          version: QrVersions.auto,
+          size: 200.0,
+        ),
+      ),
+    );
+  }
+}
+```
 
 ## Documentation reference
 - [Field Definitions](vietqr_field_definitions_en.md)

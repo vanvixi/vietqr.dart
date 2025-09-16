@@ -141,9 +141,54 @@ final payment = VietQrData.custom(
   ),
 );
 ```
-## Package liên quan
 
-- [**vietqr_widget**](https://pub.dev/packages/vietqr_widget) - Flutter UI widget để hiển thị mã VietQR
+### Sử dụng với Flutter
+
+#### Khuyến nghị: Sử dụng [**VietQR Widget**](https://pub.dev/packages/vietqr_widget)
+
+Để có trải nghiệm phát triển tốt nhất với tích hợp liền mạch, chúng tôi khuyến nghị sử dụng package [**vietqr_widget**](https://pub.dev/packages/vietqr_widget) cung cấp widget Flutter sẵn dùng
+
+#### Thay thế: Tích hợp thủ công với qr_flutter
+
+Nếu bạn không muốn sử dụng `vietqr_widget`, đây là ví dụ đơn giản kết hợp `vietqr_core` với `qr_flutter`:
+
+```dart
+import 'package:flutter/material.dart';
+import 'package:qr_flutter/qr_flutter.dart';
+import 'package:vietqr_core/vietqr_core.dart';
+
+class SimpleQrCode extends StatelessWidget {
+  const SimpleQrCode({super.key});
+
+  @override
+  Widget build(BuildContext context) {
+    final payment = VietQrData(
+      bankBinCode: SupportedBank.vietcombank,
+      bankAccount: 'v9x',
+      merchantName: 'VietQR Widget',
+      merchantCity: 'Hanoi',
+      additional: const AdditionalData(purpose: 'Thanh toán cà phê'),
+    );
+
+    final qrString = VietQr.encode(payment);
+
+    return Scaffold(
+      appBar: AppBar(title: Text('Thanh Toán VietQR')),
+      body: Center(
+        child: QrImageView(
+          data: qrString,
+          version: QrVersions.auto,
+          size: 200.0,
+        ),
+      ),
+    );
+  }
+}
+```
+
+## Tài liệu tham khảo
+- [Định nghĩa các trường](vietqr_field_definitions_en.md)
+- [Tài liệu đặc tả kỹ thuật định dạng](https://vietqr.net/portal-service/download/documents/QR_Format_T&C_v1.5.2_EN_102022.pdf)
 
 ## Tài liệu tham khảo
 - [Định nghĩa các trường](vietqr_field_definitions_en.md)
