@@ -1,3 +1,39 @@
+# Change Log
+
+All notable changes to this project will be documented in this file.
+See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
+
+## 2025-09-16
+
+### Changes
+
+---
+
+Packages with breaking changes:
+
+ - There are no breaking changes in this release.
+
+Packages with other changes:
+
+ - [`vietqr_core` - `v0.2.5+1`](#vietqr_core---v0251)
+ - [`vietqr_widget` - `v0.1.1+3`](#vietqr_widget---v0113)
+
+Packages with dependency updates only:
+
+> Packages listed below depend on other packages in this workspace that have had changes. Their versions have been incremented to bump the minimum dependency versions of the packages they depend upon in this project.
+
+ - `vietqr_widget` - `v0.1.1+3`
+
+---
+
+#### `vietqr_core` - `v0.2.5+1`
+
+ - **DOCS**(vietqr_core): update README files for improved clarity and link integration.
+ - **DOCS**(vietqr_core): remove Flutter widget section from README files for clarity.
+ - **DOCS**(vietqr_core): update supported banks section for improved clarity and consistency.
+ - **DOCS**(vietqr_core): add Flutter integration examples and recommend vietqr_widget for better development experience.
+ - **DOCS**(vietqr_core): update bank support information to reflect 60 Vietnamese banks and improve clarity.
+
 ## 2025-09-16
 
 ### Changes

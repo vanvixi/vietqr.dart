@@ -1,6 +1,6 @@
 name: vietqr_widget
 description: A Flutter UI widget to display VietQR codes. Built on top of vietqr_encode.
-version: 0.1.1+2
+version: 0.1.1+3
 homepage: https://github.com/vanvixi/vietqr.dart
 repository: https://github.com/vanvixi/vietqr.dart/tree/main/packages/vietqr_widget
 issue_tracker: https://github.com/vanvixi/vietqr.dart/issues
@@ -12,7 +12,7 @@ dependencies:
   flutter:
     sdk: flutter
 
-  vietqr_core: ^0.2.5
+  vietqr_core: ^0.2.5+1
   pretty_qr_code: ^3.5.0
 
 dev_dependencies:
