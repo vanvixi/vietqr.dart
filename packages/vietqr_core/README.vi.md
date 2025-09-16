@@ -24,10 +24,6 @@ Thư viện Dart thuần để mã hóa và giải mã dữ liệu VietQR theo c
 
 Nếu bạn muốn cảm ơn, hãy star cho chúng tôi trên GitHub hoặc like trên pub.dev.
 
-## Bạn đang tìm kiếm Flutter Widget?
-
-Nếu bạn đang xây dựng ứng dụng Flutter và muốn hiển thị mã VietQR với giao diện đẹp, hãy xem [**vietqr_widget**](https://pub.dev/packages/vietqr_widget) - một Flutter widget sử dụng thư viện này để tạo mã VietQr.
-
 ## Cách sử dụng
 
 Trước tiên, làm theo [hướng dẫn cài đặt package](https://pub.dev/packages/vietqr_core/install) và import thư viện:

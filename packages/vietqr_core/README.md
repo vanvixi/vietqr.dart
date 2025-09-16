@@ -24,10 +24,6 @@ A pure Dart library for encoding and decoding VietQR data according to the EMVCo
 
 If you want to say thank you, star us on GitHub or like us on pub.dev.
 
-## Looking for Flutter Widget?
-
-If you're building a Flutter app and want to display VietQR codes with a beautiful UI, check out [**vietqr_widget**](https://pub.dev/packages/vietqr_widget) - a Flutter widget that uses this library under the hood.
-
 ## Usage
 
 First, follow the [package installation instructions](https://pub.dev/packages/vietqr_core/install) and import the library:
