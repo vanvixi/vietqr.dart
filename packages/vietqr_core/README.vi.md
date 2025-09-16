@@ -24,23 +24,7 @@ Thư viện Dart thuần để mã hóa và giải mã dữ liệu VietQR theo c
 
 Nếu bạn muốn cảm ơn, hãy star cho chúng tôi trên GitHub hoặc like trên pub.dev.
 
-## Các ngân hàng được hỗ trợ
-
-Gói thư viện đã tích hợp sẵn các ngân hàng phổ biến tại Việt Nam:
-
-- **Vietcombank** (970436)
-- **Vietinbank** (970415)
-- **BIDV** (970418)
-- **Agribank** (970405)
-- **Techcombank** (970407)
-- **MB Bank** (970422)
-- **ACB** (970416)
-- **VPBank** (970432)
-- **Sacombank** (970403)
-- **TPBank** (970423)
-- Xem danh sách đầy đủ trong [**SupportedBank**](https://github.com/vanvixi/vietqr.dart/blob/main/packages/vietqr_core/lib/src/const/supported_bank.dart) enum.
-
-Bạn đang tìm kiếm Flutter Widget?
+## Bạn đang tìm kiếm Flutter Widget?
 
 Nếu bạn đang xây dựng ứng dụng Flutter và muốn hiển thị mã VietQR với giao diện đẹp, hãy xem [**vietqr_widget**](https://pub.dev/packages/vietqr_widget) - một Flutter widget sử dụng thư viện này để tạo mã VietQr.
 
@@ -247,6 +231,17 @@ Thông tin bổ sung cho giao dịch thanh toán.
 ### SupportedBank Enum
 
 Tập hợp các ngân hàng được hỗ trợ và mã BIN tương ứng.
+- **Vietcombank** (970436)
+- **Vietinbank** (970415)
+- **BIDV** (970418)
+- **Agribank** (970405)
+- **Techcombank** (970407)
+- **MB Bank** (970422)
+- **ACB** (970416)
+- **VPBank** (970432)
+- **Sacombank** (970403)
+- **TPBank** (970423)
+- Xem danh sách đầy đủ trong [**SupportedBank**](https://github.com/vanvixi/vietqr.dart/blob/main/packages/vietqr_core/lib/src/const/supported_bank.dart) enum.
 
 #### Phương thức
 

@@ -24,22 +24,6 @@ A pure Dart library for encoding and decoding VietQR data according to the EMVCo
 
 If you want to say thank you, star us on GitHub or like us on pub.dev.
 
-## Supported Banks
-
-The package includes built-in support for major Vietnamese banks:
-
-- **Vietcombank** (970436)
-- **Vietinbank** (970415)
-- **BIDV** (970418)
-- **Agribank** (970405)
-- **Techcombank** (970407)
-- **MB Bank** (970422)
-- **ACB** (970416)
-- **VPBank** (970432)
-- **Sacombank** (970403)
-- **TPBank** (970423)
-- See the full list in the [**SupportedBank**](https://github.com/vanvixi/vietqr.dart/blob/main/packages/vietqr_core/lib/src/const/supported_bank.dart) enum.
-
 ## Looking for Flutter Widget?
 
 If you're building a Flutter app and want to display VietQR codes with a beautiful UI, check out [**vietqr_widget**](https://pub.dev/packages/vietqr_widget) - a Flutter widget that uses this library under the hood.
@@ -242,6 +226,18 @@ Contains optional additional payment information.
 ### SupportedBank Enum
 
 Enum containing supported Vietnamese banks with their BIN codes.
+
+- **Vietcombank** (970436)
+- **Vietinbank** (970415)
+- **BIDV** (970418)
+- **Agribank** (970405)
+- **Techcombank** (970407)
+- **MB Bank** (970422)
+- **ACB** (970416)
+- **VPBank** (970432)
+- **Sacombank** (970403)
+- **TPBank** (970423)
+- See the full list in the [**SupportedBank**](https://github.com/vanvixi/vietqr.dart/blob/main/packages/vietqr_core/lib/src/const/supported_bank.dart) enum.
 
 #### Methods
 
