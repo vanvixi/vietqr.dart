@@ -18,7 +18,7 @@ Thư viện Dart thuần để mã hóa và giải mã dữ liệu VietQR theo c
 * **Tuân thủ chuẩn EMVCo** – Phù hợp với đặc tả mã QR của EMVCo
 * **Mã hóa & Giải mã** – Hỗ trợ đầy đủ cho cả hai chức năng
 * **Kiểu dữ liệu an toàn (Type-safe)** – Được kiểm tra và xác thực chặt chẽ
-* **Hỗ trợ 18+ ngân hàng** – Tích hợp sẵn các ngân hàng lớn tại Việt Nam
+* **Hỗ trợ 60 ngân hàng** – Tích hợp sẵn các ngân hàng lớn tại Việt Nam
 * **Mở rộng dễ dàng** – Cho phép thêm cấu hình ngân hàng tùy chỉnh
 * **Tài liệu đầy đủ** – Có hướng dẫn và ví dụ chi tiết
 
@@ -38,15 +38,7 @@ Gói thư viện đã tích hợp sẵn các ngân hàng phổ biến tại Vi�
 - **VPBank** (970432)
 - **Sacombank** (970403)
 - **TPBank** (970423)
-- **Eximbank** (970431)
-- **MSB** (970426)
-- **Nam A Bank** (970428)
-- **OCB** (970448)
-- **SeABank** (970440)
-- **LPBank** (970449)
-- **VietA Bank** (970427)
-- **BaoViet Bank** (970438)
-- **ABBank** (970425)
+- Xem danh sách đầy đủ trong [**SupportedBank**](https://github.com/vanvixi/vietqr.dart/blob/main/packages/vietqr_core/lib/src/const/supported_bank.dart) enum.
 
 Bạn đang tìm kiếm Flutter Widget?
 

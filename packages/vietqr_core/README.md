@@ -18,7 +18,7 @@ A pure Dart library for encoding and decoding VietQR data according to the EMVCo
 * **EMVCo compliant** – Adheres to EMVCo QR Code Specification
 * **Encode & Decode** – Full support for encoding and decoding VietQR data
 * **Type-safe** – Strong typing with comprehensive validation
-* **18+ Vietnamese banks** – Built-in support for major Vietnamese banks
+* **60 Vietnamese banks** – Built-in support for major Vietnamese banks
 * **Extensible** – Easy to add custom bank configurations
 * **Well-documented** – Comprehensive documentation and examples
 
@@ -38,15 +38,7 @@ The package includes built-in support for major Vietnamese banks:
 - **VPBank** (970432)
 - **Sacombank** (970403)
 - **TPBank** (970423)
-- **Eximbank** (970431)
-- **MSB** (970426)
-- **Nam A Bank** (970428)
-- **OCB** (970448)
-- **SeABank** (970440)
-- **LPBank** (970449)
-- **VietA Bank** (970427)
-- **BaoViet Bank** (970438)
-- **ABBank** (970425)
+- See the full list in the [**SupportedBank**](https://github.com/vanvixi/vietqr.dart/blob/main/packages/vietqr_core/lib/src/const/supported_bank.dart) enum.
 
 ## Looking for Flutter Widget?
 
